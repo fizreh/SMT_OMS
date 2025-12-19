@@ -71,3 +71,4 @@ C:\Users\Farhan\Documents\Faiza\Projects\ASMPT\SMT\API\obj\Debug\net8.0\refint\A
 C:\Users\Farhan\Documents\Faiza\Projects\ASMPT\SMT\API\obj\Debug\net8.0\API.pdb
 C:\Users\Farhan\Documents\Faiza\Projects\ASMPT\SMT\API\obj\Debug\net8.0\API.genruntimeconfig.cache
 C:\Users\Farhan\Documents\Faiza\Projects\ASMPT\SMT\API\obj\Debug\net8.0\ref\API.dll
+C:\Users\Farhan\Documents\Faiza\Projects\ASMPT\SMT\API\obj\Debug\net8.0\API.sourcelink.json

@@ -97,3 +97,4 @@ C:\Users\Farhan\Documents\Faiza\Projects\ASMPT\SMT\Tests\obj\Debug\net8.0\refint
 C:\Users\Farhan\Documents\Faiza\Projects\ASMPT\SMT\Tests\obj\Debug\net8.0\Tests.pdb
 C:\Users\Farhan\Documents\Faiza\Projects\ASMPT\SMT\Tests\obj\Debug\net8.0\Tests.genruntimeconfig.cache
 C:\Users\Farhan\Documents\Faiza\Projects\ASMPT\SMT\Tests\obj\Debug\net8.0\ref\Tests.dll
+C:\Users\Farhan\Documents\Faiza\Projects\ASMPT\SMT\Tests\obj\Debug\net8.0\Tests.sourcelink.json

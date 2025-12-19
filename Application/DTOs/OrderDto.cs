@@ -8,5 +8,8 @@ namespace SMT.Application.DTOs
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime OrderDate { get; set; }
+
+        // Boards included in this order
+        public List<BoardDto> Boards { get; set; } = new();
     }
 }
