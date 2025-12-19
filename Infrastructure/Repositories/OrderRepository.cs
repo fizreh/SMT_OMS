@@ -38,6 +38,8 @@ namespace SMT.Infrastructure.Repositories
             return await _context.Orders
                 .Include(o => o.OrderBoards)
                 .ThenInclude(ob => ob.Board)
+                .ThenInclude(o => o.BoardComponents)
+                .ThenInclude(ob => ob.Component)
                 .ToListAsync();
         }
 
@@ -46,6 +48,8 @@ namespace SMT.Infrastructure.Repositories
             return await _context.Orders
                 .Include(o => o.OrderBoards)
                 .ThenInclude(ob => ob.Board)
+                .ThenInclude(o => o.BoardComponents)
+                .ThenInclude(ob => ob.Component)
                 .FirstOrDefaultAsync(o => o.Id == id);
         }
 
