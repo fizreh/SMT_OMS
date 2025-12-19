@@ -1,0 +1,483 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6036A53F-21C7-4FA2-B369-2ECF535601FD}|API\\API.csproj|c:\\users\\farhan\\documents\\faiza\\projects\\asmpt\\smt\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6036A53F-21C7-4FA2-B369-2ECF535601FD}|API\\API.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C23EA57D-4231-4B7A-9031-7C443D143E15}|Infrastructure\\Infrastructure.csproj|c:\\users\\farhan\\documents\\faiza\\projects\\asmpt\\smt\\infrastructure\\persistence\\smtdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C23EA57D-4231-4B7A-9031-7C443D143E15}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\smtdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{042EE265-BC9D-4F8E-BDB8-CC0805E0D3DB}|Application\\Application.csproj|c:\\users\\farhan\\documents\\faiza\\projects\\asmpt\\smt\\application\\services\\boardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{042EE265-BC9D-4F8E-BDB8-CC0805E0D3DB}|Application\\Application.csproj|solutionrelative:application\\services\\boardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{042EE265-BC9D-4F8E-BDB8-CC0805E0D3DB}|Application\\Application.csproj|c:\\users\\farhan\\documents\\faiza\\projects\\asmpt\\smt\\application\\dtos\\orderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{042EE265-BC9D-4F8E-BDB8-CC0805E0D3DB}|Application\\Application.csproj|solutionrelative:application\\dtos\\orderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{042EE265-BC9D-4F8E-BDB8-CC0805E0D3DB}|Application\\Application.csproj|c:\\users\\farhan\\documents\\faiza\\projects\\asmpt\\smt\\application\\dtos\\componentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{042EE265-BC9D-4F8E-BDB8-CC0805E0D3DB}|Application\\Application.csproj|solutionrelative:application\\dtos\\componentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{042EE265-BC9D-4F8E-BDB8-CC0805E0D3DB}|Application\\Application.csproj|c:\\users\\farhan\\documents\\faiza\\projects\\asmpt\\smt\\application\\dtos\\boarddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{042EE265-BC9D-4F8E-BDB8-CC0805E0D3DB}|Application\\Application.csproj|solutionrelative:application\\dtos\\boarddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3BEB8DAF-4DC6-4540-88F1-545C450F0833}|Domain\\Domain.csproj|c:\\users\\farhan\\documents\\faiza\\projects\\asmpt\\smt\\domain\\entities\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BEB8DAF-4DC6-4540-88F1-545C450F0833}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3BEB8DAF-4DC6-4540-88F1-545C450F0833}|Domain\\Domain.csproj|c:\\users\\farhan\\documents\\faiza\\projects\\asmpt\\smt\\domain\\entities\\orderboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BEB8DAF-4DC6-4540-88F1-545C450F0833}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\orderboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3BEB8DAF-4DC6-4540-88F1-545C450F0833}|Domain\\Domain.csproj|c:\\users\\farhan\\documents\\faiza\\projects\\asmpt\\smt\\domain\\entities\\boardcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BEB8DAF-4DC6-4540-88F1-545C450F0833}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\boardcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C23EA57D-4231-4B7A-9031-7C443D143E15}|Infrastructure\\Infrastructure.csproj|c:\\users\\farhan\\documents\\faiza\\projects\\asmpt\\smt\\infrastructure\\repositories\\boardresitory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C23EA57D-4231-4B7A-9031-7C443D143E15}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\boardresitory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C23EA57D-4231-4B7A-9031-7C443D143E15}|Infrastructure\\Infrastructure.csproj|c:\\users\\farhan\\documents\\faiza\\projects\\asmpt\\smt\\infrastructure\\repositories\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C23EA57D-4231-4B7A-9031-7C443D143E15}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C23EA57D-4231-4B7A-9031-7C443D143E15}|Infrastructure\\Infrastructure.csproj|c:\\users\\farhan\\documents\\faiza\\projects\\asmpt\\smt\\infrastructure\\repositories\\componentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C23EA57D-4231-4B7A-9031-7C443D143E15}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\componentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{042EE265-BC9D-4F8E-BDB8-CC0805E0D3DB}|Application\\Application.csproj|c:\\users\\farhan\\documents\\faiza\\projects\\asmpt\\smt\\application\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{042EE265-BC9D-4F8E-BDB8-CC0805E0D3DB}|Application\\Application.csproj|solutionrelative:application\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{042EE265-BC9D-4F8E-BDB8-CC0805E0D3DB}|Application\\Application.csproj|c:\\users\\farhan\\documents\\faiza\\projects\\asmpt\\smt\\application\\services\\componentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{042EE265-BC9D-4F8E-BDB8-CC0805E0D3DB}|Application\\Application.csproj|solutionrelative:application\\services\\componentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3BEB8DAF-4DC6-4540-88F1-545C450F0833}|Domain\\Domain.csproj|c:\\users\\farhan\\documents\\faiza\\projects\\asmpt\\smt\\domain\\entities\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BEB8DAF-4DC6-4540-88F1-545C450F0833}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{042EE265-BC9D-4F8E-BDB8-CC0805E0D3DB}|Application\\Application.csproj|c:\\users\\farhan\\documents\\faiza\\projects\\asmpt\\smt\\application\\interfaces\\icomponentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{042EE265-BC9D-4F8E-BDB8-CC0805E0D3DB}|Application\\Application.csproj|solutionrelative:application\\interfaces\\icomponentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{042EE265-BC9D-4F8E-BDB8-CC0805E0D3DB}|Application\\Application.csproj|c:\\users\\farhan\\documents\\faiza\\projects\\asmpt\\smt\\application\\interfaces\\iboardrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{042EE265-BC9D-4F8E-BDB8-CC0805E0D3DB}|Application\\Application.csproj|solutionrelative:application\\interfaces\\iboardrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{042EE265-BC9D-4F8E-BDB8-CC0805E0D3DB}|Application\\Application.csproj|c:\\users\\farhan\\documents\\faiza\\projects\\asmpt\\smt\\application\\interfaces\\iorderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{042EE265-BC9D-4F8E-BDB8-CC0805E0D3DB}|Application\\Application.csproj|solutionrelative:application\\interfaces\\iorderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{042EE265-BC9D-4F8E-BDB8-CC0805E0D3DB}|Application\\Application.csproj|c:\\users\\farhan\\documents\\faiza\\projects\\asmpt\\smt\\application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{042EE265-BC9D-4F8E-BDB8-CC0805E0D3DB}|Application\\Application.csproj|solutionrelative:application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3BEB8DAF-4DC6-4540-88F1-545C450F0833}|Domain\\Domain.csproj|c:\\users\\farhan\\documents\\faiza\\projects\\asmpt\\smt\\domain\\entities\\component.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BEB8DAF-4DC6-4540-88F1-545C450F0833}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\component.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3BEB8DAF-4DC6-4540-88F1-545C450F0833}|Domain\\Domain.csproj|c:\\users\\farhan\\documents\\faiza\\projects\\asmpt\\smt\\domain\\entities\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BEB8DAF-4DC6-4540-88F1-545C450F0833}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{01FE1D40-A3AC-4E78-AC6E-6B44F6C3E992}|Tests\\Tests.csproj|c:\\users\\farhan\\documents\\faiza\\projects\\asmpt\\smt\\tests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{01FE1D40-A3AC-4E78-AC6E-6B44F6C3E992}|Tests\\Tests.csproj|solutionrelative:tests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C23EA57D-4231-4B7A-9031-7C443D143E15}|Infrastructure\\Infrastructure.csproj|c:\\users\\farhan\\documents\\faiza\\projects\\asmpt\\smt\\infrastructure\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C23EA57D-4231-4B7A-9031-7C443D143E15}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3BEB8DAF-4DC6-4540-88F1-545C450F0833}|Domain\\Domain.csproj|c:\\users\\farhan\\documents\\faiza\\projects\\asmpt\\smt\\domain\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BEB8DAF-4DC6-4540-88F1-545C450F0833}|Domain\\Domain.csproj|solutionrelative:domain\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Infrastructure\\Logging\\SeriLogLogger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Infrastructure\\Logging\\SeriLogLogger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6036A53F-21C7-4FA2-B369-2ECF535601FD}|API\\API.csproj|C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\API\\Controllers\\BoardsController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6036A53F-21C7-4FA2-B369-2ECF535601FD}|API\\API.csproj|solutionrelative:API\\Controllers\\BoardsController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6036A53F-21C7-4FA2-B369-2ECF535601FD}|API\\API.csproj|C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\API\\Controllers\\ComponentsController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6036A53F-21C7-4FA2-B369-2ECF535601FD}|API\\API.csproj|solutionrelative:API\\Controllers\\ComponentsController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6036A53F-21C7-4FA2-B369-2ECF535601FD}|API\\API.csproj|C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\API\\Controllers\\OrdersController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6036A53F-21C7-4FA2-B369-2ECF535601FD}|API\\API.csproj|solutionrelative:API\\Controllers\\OrdersController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "BoardComponent.cs",
+              "DocumentMoniker": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Domain\\Entities\\BoardComponent.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\BoardComponent.cs",
+              "ToolTip": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Domain\\Entities\\BoardComponent.cs",
+              "RelativeToolTip": "Domain\\Entities\\BoardComponent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T10:06:11.356Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "OrderBoard.cs",
+              "DocumentMoniker": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Domain\\Entities\\OrderBoard.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\OrderBoard.cs",
+              "ToolTip": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Domain\\Entities\\OrderBoard.cs",
+              "RelativeToolTip": "Domain\\Entities\\OrderBoard.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T10:07:46.322Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Domain\\Entities\\Order.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\Order.cs",
+              "ToolTip": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Domain\\Entities\\Order.cs",
+              "RelativeToolTip": "Domain\\Entities\\Order.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T10:05:30.552Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ComponentDto.cs",
+              "DocumentMoniker": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Application\\DTOs\\ComponentDto.cs",
+              "RelativeDocumentMoniker": "Application\\DTOs\\ComponentDto.cs",
+              "ToolTip": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Application\\DTOs\\ComponentDto.cs",
+              "RelativeToolTip": "Application\\DTOs\\ComponentDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T10:33:15.993Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "OrderDto.cs",
+              "DocumentMoniker": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Application\\DTOs\\OrderDto.cs",
+              "RelativeDocumentMoniker": "Application\\DTOs\\OrderDto.cs",
+              "ToolTip": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Application\\DTOs\\OrderDto.cs",
+              "RelativeToolTip": "Application\\DTOs\\OrderDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T10:18:04.923Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BoardService.cs",
+              "DocumentMoniker": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Application\\Services\\BoardService.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\BoardService.cs",
+              "ToolTip": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Application\\Services\\BoardService.cs",
+              "RelativeToolTip": "Application\\Services\\BoardService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T11:15:53.961Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\API\\Program.cs",
+              "RelativeDocumentMoniker": "API\\Program.cs",
+              "ToolTip": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\API\\Program.cs",
+              "RelativeToolTip": "API\\Program.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAswCAAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T11:13:43.509Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d84ee353-0bef-5a41-a649-8f89aca5d84d}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SMTDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Infrastructure\\Persistence\\SMTDbContext.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\SMTDbContext.cs",
+              "ToolTip": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Infrastructure\\Persistence\\SMTDbContext.cs",
+              "RelativeToolTip": "Infrastructure\\Persistence\\SMTDbContext.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T10:50:30.349Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BoardDto.cs",
+              "DocumentMoniker": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Application\\DTOs\\BoardDto.cs",
+              "RelativeDocumentMoniker": "Application\\DTOs\\BoardDto.cs",
+              "ToolTip": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Application\\DTOs\\BoardDto.cs",
+              "RelativeToolTip": "Application\\DTOs\\BoardDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T10:18:43.376Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "BoardResitory.cs",
+              "DocumentMoniker": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Infrastructure\\Repositories\\BoardResitory.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Repositories\\BoardResitory.cs",
+              "ToolTip": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Infrastructure\\Repositories\\BoardResitory.cs",
+              "RelativeToolTip": "Infrastructure\\Repositories\\BoardResitory.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAADoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T10:54:51.705Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "OrderRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Infrastructure\\Repositories\\OrderRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Repositories\\OrderRepository.cs",
+              "ToolTip": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Infrastructure\\Repositories\\OrderRepository.cs",
+              "RelativeToolTip": "Infrastructure\\Repositories\\OrderRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T10:54:00.739Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ComponentRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Infrastructure\\Repositories\\ComponentRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Repositories\\ComponentRepository.cs",
+              "ToolTip": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Infrastructure\\Repositories\\ComponentRepository.cs",
+              "RelativeToolTip": "Infrastructure\\Repositories\\ComponentRepository.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T10:58:18.008Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "OrderService.cs",
+              "DocumentMoniker": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Application\\Services\\OrderService.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\OrderService.cs",
+              "ToolTip": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Application\\Services\\OrderService.cs",
+              "RelativeToolTip": "Application\\Services\\OrderService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T10:33:55.69Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ComponentService.cs",
+              "DocumentMoniker": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Application\\Services\\ComponentService.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\ComponentService.cs",
+              "ToolTip": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Application\\Services\\ComponentService.cs",
+              "RelativeToolTip": "Application\\Services\\ComponentService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADYAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T11:22:41.211Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Entity.cs",
+              "DocumentMoniker": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Domain\\Entities\\Entity.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\Entity.cs",
+              "ToolTip": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Domain\\Entities\\Entity.cs",
+              "RelativeToolTip": "Domain\\Entities\\Entity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T10:00:45.417Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "BoardsController.cs",
+              "DocumentMoniker": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\API\\Controllers\\BoardsController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\BoardsController.cs",
+              "ToolTip": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\API\\Controllers\\BoardsController.cs",
+              "RelativeToolTip": "API\\Controllers\\BoardsController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAAAgAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T11:41:11.155Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "ComponentsController.cs",
+              "DocumentMoniker": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\API\\Controllers\\ComponentsController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\ComponentsController.cs",
+              "ToolTip": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\API\\Controllers\\ComponentsController.cs",
+              "RelativeToolTip": "API\\Controllers\\ComponentsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T11:40:45.373Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "OrdersController.cs",
+              "DocumentMoniker": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\API\\Controllers\\OrdersController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\OrdersController.cs",
+              "ToolTip": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\API\\Controllers\\OrdersController.cs",
+              "RelativeToolTip": "API\\Controllers\\OrdersController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAgwC4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T11:39:17.821Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "IComponentRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Application\\Interfaces\\IComponentRepository.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\IComponentRepository.cs",
+              "ToolTip": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Application\\Interfaces\\IComponentRepository.cs",
+              "RelativeToolTip": "Application\\Interfaces\\IComponentRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T11:06:00.875Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "IBoardRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Application\\Interfaces\\IBoardRepository.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\IBoardRepository.cs",
+              "ToolTip": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Application\\Interfaces\\IBoardRepository.cs",
+              "RelativeToolTip": "Application\\Interfaces\\IBoardRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T10:16:50.403Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "IOrderRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Application\\Interfaces\\IOrderRepository.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\IOrderRepository.cs",
+              "ToolTip": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Application\\Interfaces\\IOrderRepository.cs",
+              "RelativeToolTip": "Application\\Interfaces\\IOrderRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T10:13:26.032Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Application\\Class1.cs",
+              "RelativeDocumentMoniker": "Application\\Class1.cs",
+              "ToolTip": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Application\\Class1.cs",
+              "RelativeToolTip": "Application\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T10:12:13.519Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Board.cs",
+              "DocumentMoniker": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Domain\\Entities\\Board.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\Board.cs",
+              "ToolTip": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Domain\\Entities\\Board.cs",
+              "RelativeToolTip": "Domain\\Entities\\Board.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T10:04:41.214Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Component.cs",
+              "DocumentMoniker": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Domain\\Entities\\Component.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\Component.cs",
+              "ToolTip": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Domain\\Entities\\Component.cs",
+              "RelativeToolTip": "Domain\\Entities\\Component.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T10:03:29.705Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "UnitTest1.cs",
+              "DocumentMoniker": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Tests\\UnitTest1.cs",
+              "RelativeDocumentMoniker": "Tests\\UnitTest1.cs",
+              "ToolTip": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Tests\\UnitTest1.cs",
+              "RelativeToolTip": "Tests\\UnitTest1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T09:57:16.584Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Infrastructure\\Class1.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Class1.cs",
+              "ToolTip": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Infrastructure\\Class1.cs",
+              "RelativeToolTip": "Infrastructure\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T09:55:13.592Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Domain\\Class1.cs",
+              "RelativeDocumentMoniker": "Domain\\Class1.cs",
+              "ToolTip": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Domain\\Class1.cs",
+              "RelativeToolTip": "Domain\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T09:53:10.67Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "SeriLogLogger.cs",
+              "DocumentMoniker": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Infrastructure\\Logging\\SeriLogLogger.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Logging\\SeriLogLogger.cs",
+              "ToolTip": "C:\\Users\\Farhan\\Documents\\Faiza\\Projects\\ASMPT\\SMT\\Infrastructure\\Logging\\SeriLogLogger.cs",
+              "RelativeToolTip": "Infrastructure\\Logging\\SeriLogLogger.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T11:07:17.713Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
