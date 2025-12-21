@@ -15,6 +15,7 @@ builder.Services.AddDbContext<SMTDbContext>(options =>
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IBoardRepository, BoardRepository>();
 builder.Services.AddScoped<IComponentRepository, ComponentRepository>();
+builder.Services.AddScoped<IOrderReadRepository, OrderReadRepository>();
 
 // Add Application Services
 builder.Services.AddScoped<OrderService>();

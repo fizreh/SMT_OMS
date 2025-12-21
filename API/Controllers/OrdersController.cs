@@ -163,14 +163,14 @@ namespace SMT.API.Controllers
         [HttpPost("{id}/download")]
         public async Task<IActionResult> Download(Guid id)
         {
-            var json = await _orderService.DownloadOrderAsync(id);
+            var jsonOrder = await _orderService.DownloadOrderAsync(id);
 
-            if(json == null)
+            if(jsonOrder == null)
             {
                 return NotFound("Order not found");
             }
 
-            return Ok(new { OrderJson = json });
+            return Ok(jsonOrder);
         }
     }
 }
