@@ -2,7 +2,7 @@
 
 namespace SMT.Application.Models
 {
-    public class OrderCreateModel
+    public class OrderCreateDto
     {
         public string Name { get; set; } = null!;
         public string Description { get; set; } = null!;

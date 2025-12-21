@@ -9,10 +9,12 @@ namespace SMT.Application.Services
     public class OrderService
     {
         private readonly IOrderRepository _orderRepository;
+        private readonly IOrderReadRepository _orderReadRepository;
 
-        public OrderService(IOrderRepository orderRepository)
+        public OrderService(IOrderRepository orderRepository, IOrderReadRepository orderReadRepository)
         {
             _orderRepository = orderRepository;
+            _orderReadRepository = orderReadRepository;
         }
 
         public async Task<Order> CreateOrderAsync(string name, string description, DateTime orderDate)
@@ -45,11 +47,12 @@ namespace SMT.Application.Services
         // Simulate download to production line
         public async Task<string> DownloadOrderAsync(Guid id)
         {
-            var order = await _orderRepository.GetByIdAsync(id);
-            if (order == null) throw new Exception("Order not found");
+            var orderDownload = await _orderReadRepository.GetOrderForDownloadAsync(id);
+
+            if (orderDownload == null) throw new Exception("Order not found");
 
             // Return serialized JSON string of order
-            var orderJson = System.Text.Json.JsonSerializer.Serialize(order);
+            var orderJson = System.Text.Json.JsonSerializer.Serialize(orderDownload);
             return orderJson;
         }
     }
