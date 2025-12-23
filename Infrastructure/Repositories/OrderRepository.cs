@@ -23,6 +23,19 @@ namespace SMT.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public async Task AddOrderBoardAsync(OrderBoard orderBoard)
+        {
+
+            _context.OrderBoards.Add(orderBoard);
+            await _context.SaveChangesAsync();
+
+        }
+
+        public Task AddBoardComponentAsync(BoardComponent boardComponent)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task DeleteAsync(Guid id)
         {
             var order = await _context.Orders.FindAsync(id);
@@ -53,10 +66,14 @@ namespace SMT.Infrastructure.Repositories
                 .FirstOrDefaultAsync(o => o.Id == id);
         }
 
+       
+
         public async Task UpdateAsync(Order order)
         {
             _context.Orders.Update(order);
             await _context.SaveChangesAsync();
         }
+
+        
     }
 }

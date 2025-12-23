@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using SMT.Application.Interfaces;
 using SMT.Application.Services;
 using SMT.Infrastructure.Persistence;
@@ -10,6 +11,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<SMTDbContext>(options =>
     options.UseSqlite("Data Source=Data/smt.db"));
 
+builder.Services.AddSerilog(options =>
+{
+    options.ReadFrom.Configuration(builder.Configuration);
+
+});
 
 // Add repositories
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
@@ -40,6 +46,8 @@ app.UseSwaggerUI();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseSerilogRequestLogging();
 
 app.MapControllers();
 

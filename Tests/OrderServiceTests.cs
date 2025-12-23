@@ -1,5 +1,6 @@
 using Application.DTOs.DownloadDtos;
 using FluentAssertions;
+using Microsoft.Extensions.Logging;
 using Moq;
 using SMT.Application.DTOs;
 using SMT.Application.Services;
@@ -36,11 +37,19 @@ public class OrderServiceUnitTests
         };
 
         var mockOrderRepo = new Mock<SMT.Application.Interfaces.IOrderRepository>();
+        var mockBoardRepo = new Mock<SMT.Application.Interfaces.IBoardRepository>();
+        var mockComponentRepo = new Mock<SMT.Application.Interfaces.IComponentRepository>();
         var mockOrderReadRepo = new Mock<SMT.Application.Interfaces.IOrderReadRepository>();
+        var logger = Mock.Of<ILogger<OrderService>>();
         mockOrderReadRepo.Setup(r => r.GetOrderForDownloadAsync(It.IsAny<Guid>()))
                          .ReturnsAsync(fakeOrder);
 
-        var service = new OrderService(mockOrderRepo.Object, mockOrderReadRepo.Object);
+        var service = new OrderService(
+            mockOrderRepo.Object, 
+            mockOrderReadRepo.Object,
+            mockBoardRepo.Object,
+            mockComponentRepo .Object,
+            logger);
 
         // Act
         var json = await service.DownloadOrderAsync(Guid.NewGuid());
