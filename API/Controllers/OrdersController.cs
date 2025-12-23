@@ -12,10 +12,12 @@ namespace SMT.API.Controllers
     public class OrdersController : ControllerBase
     {
         private readonly OrderService _orderService;
+        private readonly ILogger<OrdersController> _logger;
 
-        public OrdersController(OrderService orderService)
+        public OrdersController(OrderService orderService, ILogger<OrdersController> logger)
         {
             _orderService = orderService;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -93,6 +95,8 @@ namespace SMT.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] OrderCreateDto orderCreateDto)
         {
+
+            _logger.LogInformation("Create order request started for Order {OrderName}", orderCreateDto.Name);
             var order = await _orderService.CreateOrderAsync(
                 orderCreateDto.Name,
                 orderCreateDto.Description,
@@ -101,7 +105,8 @@ namespace SMT.API.Controllers
 
             if (order == null)
             {
-                return NotFound("Order not dound");
+                _logger.LogError("Order request failed for Order {OrderName}", orderCreateDto.Name);
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
 
             // Map to DTO
@@ -128,7 +133,28 @@ namespace SMT.API.Controllers
                 }).ToList()
             };
 
+            _logger.LogInformation("Create order request completed for Order {OrderName}", orderCreateDto.Name);
+
             return CreatedAtAction(nameof(Get), new { id = order.Id }, orderDto);
+        }
+
+        [HttpPost("{orderId}/boards")]
+        public async Task<IActionResult> AddBoardToOrder(Guid orderId,[FromBody] AddBoardToOrderDto dto)
+        {
+            await _orderService.AddBoardToOrderAsync(orderId, dto.BoardId);
+
+            _logger.LogInformation("Board {BoardId} added to Order {OrderId}",dto.BoardId, orderId);
+
+            return NoContent();
+        }
+
+        public async Task<IActionResult> AddComponentToBoard(Guid boardId, [FromBody] AddComponentToBoardDto dto)
+        {
+            await _orderService.AddComponentToBoardAsync(boardId, dto.ComponentId, dto.Quantity);
+
+            _logger.LogInformation("Component {ComponentId} added to Board {BoardId}", dto.ComponentId, boardId);
+
+            return NoContent();
         }
 
         [HttpPut("{id}")]
@@ -163,6 +189,8 @@ namespace SMT.API.Controllers
         [HttpPost("{id}/download")]
         public async Task<IActionResult> Download(Guid id)
         {
+            _logger.LogInformation("API request: Download Order {OrderId}", id);
+            
             var jsonOrder = await _orderService.DownloadOrderAsync(id);
 
             if(jsonOrder == null)
