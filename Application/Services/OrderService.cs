@@ -46,28 +46,28 @@ namespace SMT.Application.Services
             
             if (orderId == Guid.Empty)
             {
-                _logger.LogWarning("Order {OrderId} is Empty When Adding board to order", orderId);
+                _logger.LogError("Order {OrderId} is Empty When Adding board to order", orderId);
                 throw new ArgumentException("OrderId cannot be empty");
             }
                 
             if (boardId == Guid.Empty)
             {
-                _logger.LogWarning("Board {BoardId} is Empty When Adding board to order", boardId);
+                _logger.LogError("Board {BoardId} is Empty When Adding board to order", boardId);
                 throw new ArgumentException("BoardId cannot be empty");
             }
            
             var order = await GetOrderByIdAsync(orderId);
             if (order == null)
             {
-                _logger.LogWarning("Order not found When Adding board to order");
-                throw new KeyNotFoundException($"Order with Id {orderId} not found.");
+                _logger.LogWarning("OrderId {OrderId} not found When Adding board to order", orderId);
+                throw new KeyNotFoundException("Order not found.");
             }
                
             var board = await _boardRepository.GetByIdAsync(boardId);
             if (board == null)
             {
-                _logger.LogWarning("Board not found When Adding board to order");
-                throw new KeyNotFoundException($"Board with Id {boardId} not found.");
+                _logger.LogWarning("BoardId {BoardId} not found When Adding board to order", boardId);
+                throw new KeyNotFoundException($"Board not found.");
             }
                
 
@@ -75,7 +75,7 @@ namespace SMT.Application.Services
             bool exists = order.OrderBoards.Any(ob => ob.BoardId == boardId);
             if (exists)
             {
-                _logger.LogWarning($" Order {order.Name} has already the board {board.Name}");
+                _logger.LogWarning(" Order {OrderName} has already the board {BoardName}", order.Name, board.Name);
                 throw new InvalidOperationException("Board is already attached to this order.");
             }
 
@@ -93,21 +93,21 @@ namespace SMT.Application.Services
         {
             if (boardId == Guid.Empty)
             {
-                _logger.LogWarning("Board {BoardId} is Empty When Adding board to order", boardId);
+                _logger.LogError("Board {BoardId} is Empty When Adding board to order", boardId);
                 throw new ArgumentException("BoardId cannot be empty");
             }
                 
 
             if (componentId == Guid.Empty)
             {
-                _logger.LogWarning("Component {ComponentId} is Empty When Adding component to board", componentId);
+                _logger.LogError("Component {ComponentId} is Empty When Adding component to board", componentId);
                 throw new ArgumentException("ComponentId cannot be empty");
             }
                
 
             if (quantity <= 0)
             {
-                _logger.LogWarning("Quantity should be greater than 0");
+                _logger.LogError("Quantity {Quantity} should be greater than 0", quantity);
                 throw new ArgumentException("Quantity must be greater than 0");
             }
                 
@@ -134,7 +134,7 @@ namespace SMT.Application.Services
             var exists = board.BoardComponents.Any(bc => bc.ComponentId == componentId);
             if (exists)
             {
-                _logger.LogWarning($" Board {board.Name} has already the component {component.Name}");
+                _logger.LogWarning(" Board {BoardName} has already the component {ComponentName}", board.Name, component.Name);
                 throw new InvalidOperationException("Component already exists on this board.");
             }
 
@@ -145,14 +145,14 @@ namespace SMT.Application.Services
 
             // Persist
             await _orderRepository.AddBoardComponentAsync(boardComponent);
-            _logger.LogInformation("Addition of the component is successful");
+            _logger.LogInformation("Started Adding component to the board with quantity");
         }
 
         public async Task<Order> GetOrderByIdAsync(Guid id)
         {
             if (id == Guid.Empty)
             {
-                _logger.LogWarning("Order {OrderId} not found when GETTING ORDER", id);
+                _logger.LogError("Order {OrderId} not found when GETTING ORDER", id);
                 throw new ArgumentNullException("Id not found");
             } 
             return await _orderRepository.GetByIdAsync(id);
@@ -172,7 +172,7 @@ namespace SMT.Application.Services
         {
             if (id == Guid.Empty)
             {
-                _logger.LogWarning("Order {OrderId} not found when DELETING ORDER", id);
+                _logger.LogError("Order {OrderId} not found when DELETING ORDER", id);
                 throw new ArgumentNullException("Id not found");
             }
             await _orderRepository.DeleteAsync(id);
@@ -183,13 +183,13 @@ namespace SMT.Application.Services
         {
             if (id == Guid.Empty)
             {
-                _logger.LogWarning("Order {OrderId} not found when DOWNLOADING ORDER", id);
+                _logger.LogError("Order {OrderId} not found when DOWNLOADING ORDER", id);
                 throw new ArgumentException("Order Id cannot be empty");
             }
 
             try
             {
-                _logger.LogInformation("Starting downloading the SMT production line order {ORDERID}", id);
+                _logger.LogInformation("Starting downloading the SMT production line order {OrderId}", id);
 
                 var orderDownload = await _orderReadRepository.GetOrderForDownloadAsync(id);
 

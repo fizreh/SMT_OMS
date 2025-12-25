@@ -148,6 +148,8 @@ namespace SMT.API.Controllers
             return NoContent();
         }
 
+
+        [HttpPost("{boardId}/components")]
         public async Task<IActionResult> AddComponentToBoard(Guid boardId, [FromBody] AddComponentToBoardDto dto)
         {
             await _orderService.AddComponentToBoardAsync(boardId, dto.ComponentId, dto.Quantity);
