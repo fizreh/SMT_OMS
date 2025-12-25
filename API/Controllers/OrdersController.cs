@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SMT.Application.DTOs;
 using SMT.Application.Models;
 using SMT.Application.Services;
@@ -9,15 +10,21 @@ namespace SMT.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(AuthenticationSchemes = "Firebase")]
     public class OrdersController : ControllerBase
     {
         private readonly OrderService _orderService;
         private readonly ILogger<OrdersController> _logger;
+        
 
-        public OrdersController(OrderService orderService, ILogger<OrdersController> logger)
+        public OrdersController(
+         OrderService orderService, 
+         ILogger<OrdersController> logger
+         )
         {
             _orderService = orderService;
             _logger = logger;
+            
         }
 
         [HttpGet]
