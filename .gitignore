@@ -1,24 +1,51 @@
-# Visual Studio
+# Visual Studio / IDE files
 .vs/
 *.user
 *.suo
-*.vscode
+*.cache
+*.db-shm
+*.db-wal
 
-# Build artifacts
+# Build output
 bin/
 obj/
 TestResults/
-
-# Logs
 *.log
 
-# Temporary Word/Office files
-~$*
-
-# Rider or JetBrains IDEs
+# Rider
 .idea/
 
-# SQLite files (if you want to ignore local DBs)
-*.db
-*.db-shm
-*.db-wal
+# .NET specific
+*.dll
+*.exe
+*.pdb
+*.appsettings.Development.json
+*.nuget.props
+*.nuget.targets
+*.DS_Store
+
+# Environment / Secrets
+.env
+API/Config/firebase-service.json
+
+# SQLite database
+API/Data/*.db
+
+# Temporary / auto-generated files
+*.temp
+*.bak
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# Coverage / Test artifacts
+coverage/
+*.coverage
+*.coveragexml
+*.trx
+
+# Node / Frontend
+node_modules/
+dist/
+build/
