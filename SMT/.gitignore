@@ -1,0 +1,56 @@
+# Visual Studio / IDE files
+.vs/
+*.user
+*.suo
+*.cache
+*.db-shm
+*.db-wal
+
+# Build output
+bin/
+obj/
+TestResults/
+*.log
+
+# Rider
+.idea/
+
+# .NET specific
+*.dll
+*.exe
+*.pdb
+*.appsettings.Development.json
+*.nuget.props
+*.nuget.targets
+*.DS_Store
+
+# Environment / Secrets
+.env
+API/Config/firebase-service.json
+
+# SQLite database
+API/Data/*.db
+
+# Temporary / auto-generated files
+*.temp
+*.bak
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# Coverage / Test artifacts
+coverage/
+*.coverage
+*.coveragexml
+*.trx
+
+# Node / Angular
+node_modules/
+dist/
+.sass-cache/
+.angular/
+
+# Docker
+*.dockerfile
+docker-compose.override.yml

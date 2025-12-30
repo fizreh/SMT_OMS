@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36327.8
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{3BEB8DAF-4DC6-4540-88F1-545C450F0833}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{C23EA57D-4231-4B7A-9031-7C443D143E15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{6036A53F-21C7-4FA2-B369-2ECF535601FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{01FE1D40-A3AC-4E78-AC6E-6B44F6C3E992}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{042EE265-BC9D-4F8E-BDB8-CC0805E0D3DB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		.env = .env
+		Dockerfile.txt = Dockerfile.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3BEB8DAF-4DC6-4540-88F1-545C450F0833}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BEB8DAF-4DC6-4540-88F1-545C450F0833}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BEB8DAF-4DC6-4540-88F1-545C450F0833}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BEB8DAF-4DC6-4540-88F1-545C450F0833}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C23EA57D-4231-4B7A-9031-7C443D143E15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C23EA57D-4231-4B7A-9031-7C443D143E15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C23EA57D-4231-4B7A-9031-7C443D143E15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C23EA57D-4231-4B7A-9031-7C443D143E15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6036A53F-21C7-4FA2-B369-2ECF535601FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6036A53F-21C7-4FA2-B369-2ECF535601FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6036A53F-21C7-4FA2-B369-2ECF535601FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6036A53F-21C7-4FA2-B369-2ECF535601FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01FE1D40-A3AC-4E78-AC6E-6B44F6C3E992}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01FE1D40-A3AC-4E78-AC6E-6B44F6C3E992}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01FE1D40-A3AC-4E78-AC6E-6B44F6C3E992}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01FE1D40-A3AC-4E78-AC6E-6B44F6C3E992}.Release|Any CPU.Build.0 = Release|Any CPU
+		{042EE265-BC9D-4F8E-BDB8-CC0805E0D3DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{042EE265-BC9D-4F8E-BDB8-CC0805E0D3DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{042EE265-BC9D-4F8E-BDB8-CC0805E0D3DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{042EE265-BC9D-4F8E-BDB8-CC0805E0D3DB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9E4C7A6A-ED78-47F7-8B9B-7C223A38C69C}
+	EndGlobalSection
+EndGlobal
