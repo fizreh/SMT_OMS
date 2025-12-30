@@ -1,12 +1,13 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
+  standalone: true,
   selector: 'app-root',
   imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  template: `
+    <h1>SMT Order Management</h1>
+    <router-outlet />
+  `
 })
-export class App {
-  protected readonly title = signal('smt-frontend');
-}
+export class AppComponent {}
