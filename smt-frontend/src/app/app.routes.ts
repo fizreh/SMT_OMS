@@ -4,8 +4,8 @@ export const APP_ROUTES: Routes = [
   {
     path: 'orders',
     loadChildren: () =>
-      import('./features/orders/orders-routes')
-        .then(m => m.OrdersRoutes)
+      import('./features/orders/orders.routes')
+        .then(m => m.ORDERS_ROUTES)
   },
   {
     path: '',
@@ -13,3 +13,4 @@ export const APP_ROUTES: Routes = [
     pathMatch: 'full'
   }
 ];
+

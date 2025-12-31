@@ -3,7 +3,9 @@ import { ApiService } from '../../../core/services/api.service';
 import { Order } from '../../../shared/models/order.model';
 import { Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class OrdersService {
   constructor(private api: ApiService) {}
 
