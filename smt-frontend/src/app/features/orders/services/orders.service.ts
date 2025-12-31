@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../../../core/services/api.service';
 import { Order } from '../../../shared/models/order.model';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class OrdersService {
@@ -9,4 +10,9 @@ export class OrdersService {
   getOrders() {
     return this.api.get<Order[]>('orders');
   }
+
+  downloadOrder(orderId: string): Observable<any> {
+    return this.api.post<any>(`orders/${orderId}/download`, {});
+  }
+  
 }
