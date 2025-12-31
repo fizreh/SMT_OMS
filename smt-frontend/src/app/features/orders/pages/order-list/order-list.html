@@ -1,7 +1,11 @@
+
 <h2>Orders</h2>
 
 <ul>
   <li *ngFor="let order of orders">
-    {{ order.name }} – {{ order.orderDate }}
+    <strong>{{ order.name }}</strong>
+    <button (click)="viewOrder(order.id)">
+      Download / View
+    </button>
   </li>
 </ul>

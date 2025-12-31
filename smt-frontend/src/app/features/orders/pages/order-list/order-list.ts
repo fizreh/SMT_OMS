@@ -3,33 +3,13 @@ import { CommonModule } from '@angular/common';
 import { OrdersService } from '../../services/orders.service';
 import { Order } from '../../../../shared/models/order.model';
 import { OrderDetailComponent } from "../order-detail/order-detail";
+import { Router } from '@angular/router';
 
 @Component({
   standalone: true,
   selector: 'app-orders-list',
-  imports: [CommonModule, OrderDetailComponent],
-  providers: [OrdersService],
-  template: `
-    <h2>Orders</h2>
-
-    <ul>
-      <li *ngFor="let order of orders">
-        {{ order.name }}  {{ order.orderDate }}
-
-          <button
-          (click)="selectedOrderId = order.id" 
-          [disabled]="loadingId === order.id"
-        >
-           {{ loadingId === order.id ? 'Downloading...' : 'Download to Production' }}
-        </button>
-        <app-order-detail *ngIf="selectedOrderId" [orderId]="selectedOrderId"></app-order-detail>
-         <span *ngIf="successId === order.id" style="color: green;">
-      ✓ Downloaded
-    </span>
-      </li>
-    </ul>
-    
-  `
+  imports: [CommonModule],
+  templateUrl: './order-list.html'
 })
 export class OrdersListComponent implements OnInit {
   selectedOrderId: string | null = null;
@@ -37,14 +17,18 @@ export class OrdersListComponent implements OnInit {
   loadingId: string | null = null;
   message = '';
   successId: string | null = null;
+ 
 
-  constructor(private ordersService: OrdersService) {}
+  constructor(private ordersService: OrdersService, private router: Router) {}
 
   ngOnInit() {
     this.ordersService.getOrders().subscribe({
       next: orders => (this.orders = orders),
       error: () => (this.message = 'Failed to load orders')
     });
+  }
+   viewOrder(orderId: string) {
+    this.router.navigate(['/orders', orderId]);
   }
 
 //   download(orderId: string) {

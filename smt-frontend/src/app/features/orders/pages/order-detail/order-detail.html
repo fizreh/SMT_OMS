@@ -1,7 +1,44 @@
 <div *ngIf="loading">Loading order details...</div>
 <div *ngIf="error">{{ error }}</div>
 
-<div *ngIf="order">
-  <h3>Order Details (ID: {{ orderId }})</h3>
-  <pre>{{ order | json }}</pre>
+<h2>Order Details</h2>
+
+<div class="toggle">
+  <button 
+    [class.active]="viewMode === 'formatted'"
+    (click)="setView('formatted')">
+    Formatted View
+  </button>
+
+  <button 
+    [class.active]="viewMode === 'json'"
+    (click)="setView('json')">
+    JSON View
+  </button>
 </div>
+
+<hr />
+
+<!-- FORMATTED VIEW -->
+<div *ngIf="order && viewMode === 'formatted'">
+  <p><strong>Name:</strong> {{ order.Name }}</p>
+  <p><strong>Description:</strong> {{ order.Description }}</p>
+  <p><strong>Date:</strong> {{ order.OrderDate }}</p>
+
+  <h3>Boards</h3>
+  <div *ngFor="let board of order.Boards">
+    <h4>{{ board.Name }}</h4>
+    <p>{{ board.Description }}</p>
+
+    <ul>
+      <li *ngFor="let comp of board.Components">
+        {{ comp.Name }} — Qty: {{ comp.Quantity }}
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- JSON VIEW -->
+<pre *ngIf="order && viewMode === 'json'">
+{{ order | json }}
+</pre>
