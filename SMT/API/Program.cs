@@ -11,6 +11,8 @@ using SMT.Infrastructure.Repositories;
 
 
 var builder = WebApplication.CreateBuilder(args);
+// Define CORS policy
+var allowedOrigins = "_allowedOrigins";
 
 // Add DbContext
 builder.Services.AddDbContext<SMTDbContext>(options =>
@@ -20,6 +22,16 @@ builder.Services.AddSerilog(options =>
 {
     options.ReadFrom.Configuration(builder.Configuration);
 
+});
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: allowedOrigins, policy =>
+    {
+        policy.WithOrigins("http://localhost:4200") // Angular app
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
 });
 
 //Added Authorization in Swaggers to test the APIs.
@@ -87,6 +99,9 @@ using (var scope = app.Services.CreateScope())
 
 app.UseSwagger();
 app.UseSwaggerUI();
+
+// Enable CORS middleware
+app.UseCors(allowedOrigins);
 
 app.UseHttpsRedirection();
 

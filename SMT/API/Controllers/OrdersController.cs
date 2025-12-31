@@ -10,7 +10,7 @@ namespace SMT.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(AuthenticationSchemes = "Firebase")]
+   // [Authorize(AuthenticationSchemes = "Firebase")]
     public class OrdersController : ControllerBase
     {
         private readonly OrderService _orderService;
@@ -28,6 +28,7 @@ namespace SMT.API.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAll()
         {
             var orders = await _orderService.GetAllOrdersAsync();
@@ -64,6 +65,7 @@ namespace SMT.API.Controllers
         }
 
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<IActionResult> Get(Guid id)
         {
             var order = await _orderService.GetOrderByIdAsync(id);
