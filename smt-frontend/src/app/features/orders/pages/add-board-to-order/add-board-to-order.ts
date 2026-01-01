@@ -28,6 +28,7 @@ export class AddBoardComponent {
     // Fetch boards from backend
     this.boardsService.getBoards().subscribe((b: any[]) => {
       this.boards = b;
+      console.log("BOARDS: ",this.boards);
     });
   }
 
