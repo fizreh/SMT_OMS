@@ -1,1 +1,48 @@
-<p>order-create works!</p>
+<mat-card>
+  <mat-card-title>Create Order</mat-card-title>
+
+  <mat-card-content>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Order Name</mat-label>
+      <input matInput [(ngModel)]="order.name" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput [(ngModel)]="order.description"></textarea>
+    </mat-form-field>
+
+    <mat-divider></mat-divider>
+
+    <app-add-board-to-order  (boardAdded)="addBoard($event)"></app-add-board-to-order>
+
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let board of order.boards">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ board.boardName }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <app-add-component  [boardId]="board.boardId" (componentAdded)="addComponentToBoard($event.boardId, $event)"></app-add-component>
+
+        <mat-list>
+          <mat-list-item *ngFor="let c of board.components">
+            {{ c.componentName }} — Qty: {{ c.quantity }}
+          </mat-list-item>
+        </mat-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="submit()"
+      [disabled]="!canSubmit()"
+    >
+      Create Order
+    </button>
+  </mat-card-actions>
+</mat-card>

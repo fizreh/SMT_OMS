@@ -1,0 +1,19 @@
+<mat-card>
+  <mat-form-field appearance="outline">
+    <mat-label>Select Board</mat-label>
+    <mat-select [(ngModel)]="selectedBoardId">
+      <mat-option *ngFor="let b of boards" [value]="b.id">
+        {{ b.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button
+    mat-stroked-button
+    color="accent"
+    (click)="addBoard()"
+    [disabled]="!selectedBoardId"
+  >
+    Add Board
+  </button>
+</mat-card>

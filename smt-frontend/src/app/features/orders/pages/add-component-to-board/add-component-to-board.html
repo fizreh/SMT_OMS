@@ -1,0 +1,22 @@
+<mat-form-field appearance="outline">
+  <mat-label>Component</mat-label>
+  <mat-select [(ngModel)]="selectedComponentId">
+    <mat-option *ngFor="let c of components" [value]="c.id">
+      {{ c.name }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+  <mat-label>Quantity</mat-label>
+  <input matInput type="number" [(ngModel)]="quantity" min="1" />
+</mat-form-field>
+
+<button
+  mat-mini-fab
+  color="primary"
+  (click)="addComponent()"
+  [disabled]="!selectedComponentId"
+>
+  <mat-icon>add</mat-icon>
+</button>
