@@ -31,7 +31,7 @@ export class Login {
   async login() {
     try {
       await this.auth.login(this.email, this.password);
-      this.router.navigate(['/orders']);
+      this.router.navigate(['/']);
     } catch (e) {
       this.error = 'Login failed';
     }
