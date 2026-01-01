@@ -27,9 +27,10 @@
 
   <h3>Boards</h3>
   <div *ngFor="let board of order.Boards">
-    <h4>{{ board.Name }}</h4>
-    <p>{{ board.Description }}</p>
+    <h4>{{ board.Name }} - {{ board.Description }}</h4>
+    <p></p>
 
+    <h4>Components</h4>
     <ul>
       <li *ngFor="let comp of board.Components">
         {{ comp.Name }} — Qty: {{ comp.Quantity }}
