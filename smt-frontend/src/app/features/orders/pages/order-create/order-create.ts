@@ -5,7 +5,7 @@ import { OrdersService } from '../../services/orders.service';
 import { MATERIAL_PROVIDERS } from '../../../../shared/material/material.providers';
 import { AddComponentToBoard } from '../add-component-to-board/add-component-to-board';
 import { AddBoardComponent } from '../add-board-to-order/add-board-to-order';
-import { CreateOrder } from '../../../../shared/models/create-order-,odel';
+import { CreateOrder } from '../../../../shared/models/create-order.model';
 import { OrderBoard } from '../../../../shared/models/order-board.model';
 import { BoardComponent } from '../../../../shared/models/board-component.model';
 import { forkJoin, switchMap } from 'rxjs';
@@ -37,9 +37,7 @@ export class CreateOrderComponent {
     private fb: FormBuilder,
     private ordersService: OrdersService,
     private boardService: BoardsService
-  ) {
-    
-  }
+  ) {}
  
  
 
