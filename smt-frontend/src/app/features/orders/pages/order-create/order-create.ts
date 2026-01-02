@@ -8,7 +8,7 @@ import { AddBoardComponent } from '../add-board-to-order/add-board-to-order';
 import { CreateOrder } from '../../../../shared/models/create-order.model';
 import { OrderBoard } from '../../../../shared/models/order-board.model';
 import { BoardComponent } from '../../../../shared/models/board-component.model';
-import { forkJoin, switchMap } from 'rxjs';
+import { forkJoin, map, switchMap } from 'rxjs';
 import { BoardsService } from '../../../boards/services/board.service';
 
 @Component({
@@ -31,6 +31,8 @@ export class CreateOrderComponent {
   };
   loading = false;
   createdOrderId: string | null = null;
+  orderExists = false;
+  errorMessage = '';
  form:any;
 
    constructor(
@@ -38,6 +40,16 @@ export class CreateOrderComponent {
     private ordersService: OrdersService,
     private boardService: BoardsService
   ) {}
+
+  private checkOrderExists(name: string) {
+  return this.ordersService.getOrders().pipe(
+    map(orders =>
+      orders.some(
+        o => o.name.trim().toLowerCase() === name.trim().toLowerCase()
+      )
+    )
+  );
+ }
  
  
 
@@ -71,49 +83,69 @@ export class CreateOrderComponent {
 
   // Submit the order + boards + components
   submit() {
-    if (!this.canSubmit()) return;
+  if (!this.canSubmit()) return;
 
-    this.loading = true;
+  this.loading = true;
+  this.errorMessage = '';
+  this.orderExists = false;
 
-    // Step 1: Create the order
-    this.ordersService.createOrder({
-      name: this.order.name,
-      description: this.order.description,
-      orderDate: this.order.orderDate
-    }).subscribe({
-      next: (createdOrder) => {
-        const orderId = createdOrder.id;
-
-        // Step 2: Add boards sequentially
-        const boardRequests = this.order.boards.map(board =>
-          this.ordersService.addBoardToOrder(orderId, board.boardId).pipe(
-            // Step 3: Add components for this board
-            switchMap(() => {
-              const componentRequests = board.components.map(c =>
-                this.boardService.addComponentToBoard(board.boardId, c.componentId, c.quantity)
-              );
-              return forkJoin(componentRequests);
-            })
-          )
-        );
-
-        // Execute all boards+components
-        forkJoin(boardRequests).subscribe({
-          next: () => {
-            this.loading = false;
-            this.createdOrderId = orderId;
-            console.log('Order created successfully:', this.createdOrderId);
-          },
-          error: (err) => {
-            this.loading = false;
-            console.error('Error adding boards/components:', err);
-          }
-        });
-      },
-      error: (err) => {
+  // STEP 0: Check if order already exists
+  this.checkOrderExists(this.order.name).subscribe({
+    next: (exists) => {
+      if (exists) {
         this.loading = false;
-        console.error('Error creating order:', err);
+        this.orderExists = true;
+        this.errorMessage = 'An order with this name already exists.';
+        return;
       }
-    });
-  }
+
+      // STEP 1: Create Order
+      this.ordersService.createOrder({
+        name: this.order.name,
+        description: this.order.description,
+        orderDate: this.order.orderDate
+      }).subscribe({
+        next: (createdOrder) => {
+          const orderId = createdOrder.id;
+
+          // STEP 2: Add boards + components
+          const boardRequests = this.order.boards.map(board =>
+            this.ordersService.addBoardToOrder(orderId, board.boardId).pipe(
+              switchMap(() => {
+                const componentRequests = board.components.map(c =>
+                  this.boardService.addComponentToBoard(
+                    board.boardId,
+                    c.componentId,
+                    c.quantity
+                  )
+                );
+                return forkJoin(componentRequests);
+              })
+            )
+          );
+
+          forkJoin(boardRequests).subscribe({
+            next: () => {
+              this.loading = false;
+              this.createdOrderId = orderId;
+              console.log('Order created successfully:', orderId);
+            },
+            error: (err) => {
+              this.loading = false;
+              console.error('Error adding boards/components', err);
+            }
+          });
+        },
+        error: (err) => {
+          this.loading = false;
+          console.error('Error creating order', err);
+        }
+      });
+    },
+    error: () => {
+      this.loading = false;
+      this.errorMessage = 'Unable to validate order uniqueness.';
+    }
+  });
+}
 }

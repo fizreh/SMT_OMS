@@ -13,7 +13,7 @@ export class OrdersService {
     return this.api.post<any>(`orders`, order);
   }
    addBoardToOrder(orderId: string, boardId: string): Observable<any> {
-    return this.api.post<any>(`orders/${orderId}/boards`, boardId);
+    return this.api.post<any>(`orders/${orderId}/boards`, { boardId });
   }
   getOrders() {
     return this.api.get<Order[]>('orders');
@@ -24,3 +24,4 @@ export class OrdersService {
   }
   
 }
+
