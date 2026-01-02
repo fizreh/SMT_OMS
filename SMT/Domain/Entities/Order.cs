@@ -5,9 +5,9 @@ namespace SMT.Domain.Entities
 {
     public class Order : Entity
     {
-        public string Name { get; private set; }
-        public string Description { get; private set; }
-        public DateTime OrderDate { get; private set; }
+        public string Name { get; set; }
+        public string Description { get;  set; }
+        public DateTime OrderDate { get; set; }
 
         private readonly List<OrderBoard> _orderBoards = new();
         public IReadOnlyCollection<OrderBoard> OrderBoards => _orderBoards.AsReadOnly();

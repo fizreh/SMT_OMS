@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SMT.Application.DTOs;
-using SMT.Application.Models;
 using SMT.Application.Services;
 using System;
 using System.Threading.Tasks;

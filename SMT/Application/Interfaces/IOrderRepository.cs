@@ -14,5 +14,9 @@ namespace SMT.Application.Interfaces
         Task AddBoardComponentAsync(BoardComponent boardComponent);
         Task UpdateAsync(Order order);
         Task DeleteAsync(Guid id);
+
+        Task DeleteOrderBoardAsync(Guid id);
+        Task DeleteBoardComponentsByBoardIdsAsync(IEnumerable<Guid> ids);
+
     }
 }

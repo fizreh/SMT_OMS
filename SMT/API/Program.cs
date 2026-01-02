@@ -75,6 +75,7 @@ builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IBoardRepository, BoardRepository>();
 builder.Services.AddScoped<IComponentRepository, ComponentRepository>();
 builder.Services.AddScoped<IOrderReadRepository, OrderReadRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IFirebaseAuthService, FirebaseAuthService>();
 
 // Add Application Services
@@ -96,20 +97,19 @@ using (var scope = app.Services.CreateScope())
     var db = scope.ServiceProvider.GetRequiredService<SMTDbContext>();
     db.Database.EnsureCreated();
 }
-
 app.UseSwagger();
 app.UseSwaggerUI();
 
-// Enable CORS middleware
-app.UseCors(allowedOrigins);
+app.UseCors(allowedOrigins);          
+
+app.UseAuthentication();              
+app.UseAuthorization();
 
 app.UseHttpsRedirection();
-
-app.UseAuthentication();
-app.UseAuthorization();
 
 app.UseSerilogRequestLogging();
 
 app.MapControllers();
 
 app.Run();
+
