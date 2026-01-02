@@ -26,7 +26,8 @@ export const MATERIAL_PROVIDERS = [
   MatIconModule,
   MatDividerModule,
   MatExpansionModule,
-  MatListModule
+  MatListModule,
+  MatIconModule
 
 ]
  

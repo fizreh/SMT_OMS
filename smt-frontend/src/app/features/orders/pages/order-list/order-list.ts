@@ -4,12 +4,16 @@ import { OrdersService } from '../../services/orders.service';
 import { Order } from '../../../../shared/models/order.model';
 import { OrderDetailComponent } from "../order-detail/order-detail";
 import { Router } from '@angular/router';
+import { MatIcon } from "@angular/material/icon";
+import { MatDivider } from "@angular/material/divider";
+import { MATERIAL_PROVIDERS } from '../../../../shared/material/material.providers';
 
 @Component({
   standalone: true,
   selector: 'app-orders-list',
-  imports: [CommonModule],
-  templateUrl: './order-list.html'
+  imports: [CommonModule, MATERIAL_PROVIDERS,],
+  templateUrl: './order-list.html',
+  styleUrl: './order-list.css'
 })
 export class OrdersListComponent implements OnInit {
   selectedOrderId: string | null = null;
@@ -31,21 +35,17 @@ export class OrdersListComponent implements OnInit {
     this.router.navigate(['/orders', orderId]);
   }
 
-//   download(orderId: string) {
-//   this.loadingId = orderId;
-//   this.successId = null;
-//   this.message = '';
+confirmDelete(orderId: string) {
+  const confirmed = confirm('Are you sure you want to delete this order?');
+  if (!confirmed) return;
 
-//   this.ordersService.downloadOrder(orderId).subscribe({
-//     next: () => {
-//       this.successId = orderId;
-//       this.loadingId = null;
-//       this.message = `Order ${orderId} sent to production line`;
-//     },
-//     error: () => {
-//       this.loadingId = null;
-//       this.message = `Failed to download order ${orderId}`;
-//     }
-//   });
-// }
+  this.ordersService.deleteOrder(orderId).subscribe({
+    next: () => {
+      this.orders = this.orders.filter(o => o.id !== orderId);
+    },
+    error: (err) => {
+      console.error('Delete failed', err);
+    }
+  });
+}
 }

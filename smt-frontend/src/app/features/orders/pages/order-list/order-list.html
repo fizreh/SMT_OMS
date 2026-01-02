@@ -1,4 +1,4 @@
-
+<!-- 
 <h2>Orders</h2>
 
 <ul>
@@ -7,5 +7,49 @@
     <button (click)="viewOrder(order.id)">
       Download / View
     </button>
+     <button
+      mat-icon-button
+      color="warn"
+      (click)="confirmDelete(order.id)"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
   </li>
-</ul>
+</ul> -->
+
+<mat-list-item *ngFor="let order of orders" class="order-item">
+
+  <div class="order-row">
+
+    <!-- Order Info -->
+    <div class="order-info">
+      <h3>{{ order.name }}</h3>
+      <p class="order-meta">
+        Created: {{ order.orderDate | date:'mediumDate' }}
+      </p>
+    </div>
+
+    <!-- Actions -->
+    <div class="order-actions">
+      <button
+        mat-stroked-button
+        color="primary"
+        (click)="viewOrder(order.id)"
+      >
+        <mat-icon>download</mat-icon>
+        View
+      </button>
+
+      <button
+        mat-icon-button
+        color="warn"
+        (click)="confirmDelete(order.id)"
+        aria-label="Delete order"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+
+  </div>
+
+</mat-list-item>

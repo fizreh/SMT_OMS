@@ -4,7 +4,7 @@ import { ReactiveFormsModule, FormBuilder, Validators, FormsModule } from '@angu
 import { OrdersService } from '../../services/orders.service';
 import { MATERIAL_PROVIDERS } from '../../../../shared/material/material.providers';
 import { AddComponentToBoard } from '../add-component-to-board/add-component-to-board';
-import { AddBoardComponent } from '../add-board-to-order/add-board-to-order';
+import { AddBoardToOrder } from '../add-board-to-order/add-board-to-order';
 import { CreateOrder } from '../../../../shared/models/create-order.model';
 import { OrderBoard } from '../../../../shared/models/order-board.model';
 import { BoardComponent } from '../../../../shared/models/board-component.model';
@@ -18,7 +18,7 @@ import { BoardsService } from '../../../boards/services/board.service';
   FormsModule,
   MATERIAL_PROVIDERS,
   AddComponentToBoard,
-  AddBoardComponent
+  AddBoardToOrder
 ],
   templateUrl: './order-create.html'
 })
@@ -113,7 +113,8 @@ export class CreateOrderComponent {
             this.ordersService.addBoardToOrder(orderId, board.boardId).pipe(
               switchMap(() => {
                 const componentRequests = board.components.map(c =>
-                  this.boardService.addComponentToBoard(
+                  this.ordersService.addComponentToBoard(
+                    orderId,
                     board.boardId,
                     c.componentId,
                     c.quantity
