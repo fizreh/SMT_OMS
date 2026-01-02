@@ -36,6 +36,9 @@
   </mat-card-content>
 
   <mat-card-actions align="end">
+    <mat-error *ngIf="orderExists">
+  {{ errorMessage }}
+</mat-error>
     <button
       mat-raised-button
       color="primary"
