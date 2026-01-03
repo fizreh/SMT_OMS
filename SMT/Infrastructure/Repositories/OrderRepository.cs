@@ -18,20 +18,15 @@ namespace SMT.Infrastructure.Repositories
         }
 
         public async Task AddAsync(Order order)
-            {
+        {
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();
         }
 
 
-        public async Task AddOrderBoardAsync(OrderBoard orderBoard)
-        {
-            _context.OrderBoards.Add(orderBoard);
-            await _context.SaveChangesAsync();
+      
 
-        }
-
-        public  Task DeleteOrderBoardAsync(Guid orderId)
+        public Task DeleteOrderBoardAsync(Guid orderId)
         {
             var orderBoards = _context.OrderBoards.Where(ob => ob.OrderId == orderId);
             _context.OrderBoards.RemoveRange(orderBoards);

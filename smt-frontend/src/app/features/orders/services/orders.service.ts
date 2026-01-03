@@ -9,17 +9,10 @@ import { Observable } from 'rxjs';
 export class OrdersService {
   constructor(private api: ApiService) {}
 
-   createOrder(order:  any): Observable<any> {
-    return this.api.post<any>(`orders`, order);
-  }
-   addBoardToOrder(orderId: string, boardId: string): Observable<any> {
-    return this.api.post<any>(`orders/${orderId}/boards`, { boardId });
-  }
-   addComponentToBoard(orderId: string,boardId: string,componentId: string,quantity: number
-  ) {
-    return this.api.post<void>(`orders/${orderId}/boards/${boardId}/components`,{ componentId, quantity }
-    );
-  }
+
+  createFullOrder(order: any) {
+  return this.api.post<any>('orders/full', order);
+}
   getOrders() {
     return this.api.get<Order[]>('orders');
   }

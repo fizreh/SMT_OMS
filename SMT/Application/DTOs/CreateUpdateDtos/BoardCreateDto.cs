@@ -9,11 +9,7 @@ namespace Application.DTOs.CreateDtos
     public class BoardCreateDto
     {
         public Guid BoardId { get; set; }
-
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public double Length { get; set; }
-        public double Width { get; set; }
+     
         public List<ComponentCreateDto> Components { get; set; }
     }
 }

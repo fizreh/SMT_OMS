@@ -12,6 +12,11 @@ namespace SMT.Domain.Entities
         private readonly List<OrderBoard> _orderBoards = new();
         public IReadOnlyCollection<OrderBoard> OrderBoards => _orderBoards.AsReadOnly();
 
+        public void AddOrderBoard(OrderBoard ob)
+        {
+            _orderBoards.Add(ob);
+        }
+
         private Order() { }
 
         public Order(string name, string description, DateTime orderDate)
