@@ -18,22 +18,41 @@ namespace SMT.Infrastructure.Repositories
         }
 
         public async Task AddAsync(Order order)
-        {
+            {
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();
         }
 
+
         public async Task AddOrderBoardAsync(OrderBoard orderBoard)
         {
-
             _context.OrderBoards.Add(orderBoard);
             await _context.SaveChangesAsync();
 
         }
 
-        public Task AddBoardComponentAsync(BoardComponent boardComponent)
+        public  Task DeleteOrderBoardAsync(Guid orderId)
         {
-            throw new NotImplementedException();
+            var orderBoards = _context.OrderBoards.Where(ob => ob.OrderId == orderId);
+            _context.OrderBoards.RemoveRange(orderBoards);
+            return Task.CompletedTask;
+
+        }
+
+
+        public Task DeleteBoardComponentsByBoardIdsAsync(IEnumerable<Guid> boardIds)
+        {
+          
+            var boardComponents = _context.BoardComponents.Where(bc => boardIds.Contains(bc.BoardId));
+            _context.BoardComponents.RemoveRange(boardComponents);
+            return Task.CompletedTask;
+
+        }
+
+        public async Task AddBoardComponentAsync(BoardComponent boardComponent)
+        {
+            _context.BoardComponents.Add(boardComponent);
+            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(Guid id)

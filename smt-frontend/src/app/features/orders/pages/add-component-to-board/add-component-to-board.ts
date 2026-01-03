@@ -38,7 +38,6 @@ export class AddComponentToBoard {
     if (selected && this.quantity > 0) {
 
       const boardComponent: BoardComponent = {
-        boardId:this.boardId,
         componentId:this.selectedComponentId,
         componentName: selected.name,
         quantity:this.quantity    

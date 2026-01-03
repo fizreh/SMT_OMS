@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Application.DTOs.CreateDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SMT.Application.DTOs;
-using SMT.Application.Models;
 using SMT.Application.Services;
 using System;
 using System.Threading.Tasks;
@@ -10,7 +10,7 @@ namespace SMT.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(AuthenticationSchemes = "Firebase")]
+   // [Authorize(AuthenticationSchemes = "Firebase")]
     public class OrdersController : ControllerBase
     {
         private readonly OrderService _orderService;
@@ -64,6 +64,7 @@ namespace SMT.API.Controllers
         }
 
         [HttpGet("{id}")]
+       
         public async Task<IActionResult> Get(Guid id)
         {
             var order = await _orderService.GetOrderByIdAsync(id);
@@ -73,7 +74,7 @@ namespace SMT.API.Controllers
                 return NotFound("Order not dound");
             }
 
-            var model = new OrderDto
+            var model = new Application.DTOs.OrderDto
             {
                 Id = order.Id,
                 Name = order.Name,
@@ -99,92 +100,29 @@ namespace SMT.API.Controllers
             return Ok(model);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Create([FromBody] OrderCreateDto orderCreateDto)
+      
+
+        [HttpPost("full")]
+        [AllowAnonymous]
+        public async Task<IActionResult> CreateFullOrder(
+         [FromBody] OrderCreateDto dto)
         {
+            _logger.LogInformation("Creating full order {OrderName}", dto.Name);
 
-            _logger.LogInformation("Create order request started for Order {OrderName}", orderCreateDto.Name);
-            var order = await _orderService.CreateOrderAsync(
-                orderCreateDto.Name,
-                orderCreateDto.Description,
-                orderCreateDto.OrderDate
-            );
+            var orderId = await _orderService.CreateOrderWithDetailsAsync(dto);
 
-            if (order == null)
-            {
-                _logger.LogError("Order request failed for Order {OrderName}", orderCreateDto.Name);
-                return StatusCode(StatusCodes.Status500InternalServerError);
-            }
-
-            // Map to DTO
-            var orderDto = new OrderDto
-            {
-                Id = order.Id,
-                Name = order.Name,
-                Description = order.Description,
-                OrderDate = order.OrderDate,
-                Boards = order.OrderBoards.Select(ob => new BoardDto
-                {
-                    Id = ob.Board.Id,
-                    Name = ob.Board.Name,
-                    Description = ob.Board.Description,
-                    Length = ob.Board.Length,
-                    Width = ob.Board.Width,
-                    Components = ob.Board.BoardComponents.Select(bc => new ComponentDto
-                    {
-                        Id = bc.Component.Id,
-                        Name = bc.Component.Name,
-                        Description = bc.Component.Description,
-                        Quantity = bc.Quantity
-                    }).ToList()
-                }).ToList()
-            };
-
-            _logger.LogInformation("Create order request completed for Order {OrderName}", orderCreateDto.Name);
-
-            return CreatedAtAction(nameof(Get), new { id = order.Id }, orderDto);
+            return CreatedAtAction(nameof(Get), new { id = orderId }, null);
         }
 
-        [HttpPost("{orderId}/boards")]
-        public async Task<IActionResult> AddBoardToOrder(Guid orderId,[FromBody] AddBoardToOrderDto dto)
+        [HttpPut("{id}/full")]
+        public async Task<IActionResult> UpdateFullOrder(Guid id, [FromBody] OrderCreateDto dto)
         {
-            await _orderService.AddBoardToOrderAsync(orderId, dto.BoardId);
+            var updatedOrderId = await _orderService.UpdateOrderWithDetailsAsync(id, dto);
 
-            _logger.LogInformation("Board {BoardId} added to Order {OrderId}",dto.BoardId, orderId);
+            if (updatedOrderId == null)
+                return NotFound("Order not found");
 
-            return NoContent();
-        }
-
-
-        [HttpPost("{boardId}/components")]
-        public async Task<IActionResult> AddComponentToBoard(Guid boardId, [FromBody] AddComponentToBoardDto dto)
-        {
-            await _orderService.AddComponentToBoardAsync(boardId, dto.ComponentId, dto.Quantity);
-
-            _logger.LogInformation("Component {ComponentId} added to Board {BoardId}", dto.ComponentId, boardId);
-
-            return NoContent();
-        }
-
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Update(Guid id, [FromBody] OrderCreateDto orderCreateDto)
-        {
-            var order = await _orderService.GetOrderByIdAsync(id);
-
-            if (order == null)
-            {
-                return NotFound("Order doesnt exist!");
-            }
-
-            // Update entity via service if the order exists
-            order = new SMT.Domain.Entities.Order(
-                orderCreateDto.Name,
-                orderCreateDto.Description,
-                orderCreateDto.OrderDate
-            );
-
-            await _orderService.UpdateOrderAsync(order);
-            return NoContent();
+            return NoContent(); // Standard 204 for successful update
         }
 
 

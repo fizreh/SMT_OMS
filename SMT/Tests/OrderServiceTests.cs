@@ -3,6 +3,7 @@ using FluentAssertions;
 using Microsoft.Extensions.Logging;
 using Moq;
 using SMT.Application.DTOs;
+using SMT.Application.Interfaces;
 using SMT.Application.Services;
 using System;
 using System.Text.Json;
@@ -36,10 +37,11 @@ public class OrderServiceUnitTests
             }
         };
 
-        var mockOrderRepo = new Mock<SMT.Application.Interfaces.IOrderRepository>();
-        var mockBoardRepo = new Mock<SMT.Application.Interfaces.IBoardRepository>();
-        var mockComponentRepo = new Mock<SMT.Application.Interfaces.IComponentRepository>();
-        var mockOrderReadRepo = new Mock<SMT.Application.Interfaces.IOrderReadRepository>();
+        var mockOrderRepo = new Mock<IOrderRepository>();
+        var mockBoardRepo = new Mock<IBoardRepository>();
+        var mockComponentRepo = new Mock<IComponentRepository>();
+        var mockOrderReadRepo = new Mock<IOrderReadRepository>();
+        var mockUnitOfWork = new Mock<IUnitOfWork>();
         var logger = Mock.Of<ILogger<OrderService>>();
         mockOrderReadRepo.Setup(r => r.GetOrderForDownloadAsync(It.IsAny<Guid>()))
                          .ReturnsAsync(fakeOrder);
@@ -49,6 +51,7 @@ public class OrderServiceUnitTests
             mockOrderReadRepo.Object,
             mockBoardRepo.Object,
             mockComponentRepo .Object,
+            mockUnitOfWork.Object,
             logger);
 
         // Act

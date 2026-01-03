@@ -1,0 +1,43 @@
+/* /* Page title */
+.page-title {
+  margin-bottom: 16px;
+}
+
+/* Card should scale properly */
+.orders-card {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 8px 0;
+}
+
+/* Force row layout inside mat-list-item */
+.order-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Order info */
+.order-info h3 {
+  margin: 0;
+  font-weight: 500;
+}
+
+.order-meta {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Actions aligned horizontally */
+.order-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Improve spacing between list items */
+.order-item {
+  padding: 12px 16px;
+} 
