@@ -14,7 +14,7 @@ import { BoardsService } from "../../../boards/services/board.service";
   MATERIAL_PROVIDERS],
   templateUrl: './add-board-to-order.html'
 })
-export class AddBoardComponent {
+export class AddBoardToOrder{
   @Input() boardId!: string; // Board to which component will be added
   boards: { id: string; name: string }[] = []; // boards to populate dropdown
   @Output() boardAdded = new EventEmitter<OrderBoard>(); // emit selected board to parent

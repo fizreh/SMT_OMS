@@ -10,7 +10,7 @@ namespace SMT.Domain.Entities
     public Guid ComponentId { get; private set; }
     public Component Component { get; private set; }
 
-    public int Quantity { get; private set; }
+    public int Quantity { get;  set; }
 
     private BoardComponent() { }
 

@@ -18,6 +18,5 @@ namespace SMT.Domain.Entities
             Description = description;
         }
 
-        // Optional: Add/remove board association method later
     }
 }

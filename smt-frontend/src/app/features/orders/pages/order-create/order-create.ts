@@ -1,25 +1,25 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, Validators, FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule } from '@angular/forms';
 import { OrdersService } from '../../services/orders.service';
 import { MATERIAL_PROVIDERS } from '../../../../shared/material/material.providers';
 import { AddComponentToBoard } from '../add-component-to-board/add-component-to-board';
-import { AddBoardToOrder } from '../add-board-to-order/add-board-to-order';
+
 import { CreateOrder } from '../../../../shared/models/create-order.model';
 import { OrderBoard } from '../../../../shared/models/order-board.model';
 import { BoardComponent } from '../../../../shared/models/board-component.model';
-import { forkJoin, map, switchMap } from 'rxjs';
+import { map} from 'rxjs';
 import { BoardsService } from '../../../boards/services/board.service';
+import { AddBoardToOrder } from "../add-board-to-order/add-board-to-order";
+import { CreateOrderModel } from '../../../../shared/models/create-order-models/order-create.model';
 
 @Component({
   selector: 'app-create-order',
   standalone: true,
-  imports: [CommonModule, 
-  FormsModule,
-  MATERIAL_PROVIDERS,
-  AddComponentToBoard,
-  AddBoardToOrder
-],
+  imports: [CommonModule,
+    FormsModule,
+    MATERIAL_PROVIDERS,
+    AddComponentToBoard, AddBoardToOrder],
   templateUrl: './order-create.html'
 })
 export class CreateOrderComponent {
@@ -89,7 +89,7 @@ export class CreateOrderComponent {
   this.errorMessage = '';
   this.orderExists = false;
 
-  // STEP 0: Check if order already exists
+// STEP 0: Check if order already exists
   this.checkOrderExists(this.order.name).subscribe({
     next: (exists) => {
       if (exists) {
@@ -99,47 +99,33 @@ export class CreateOrderComponent {
         return;
       }
 
-      // STEP 1: Create Order
-      this.ordersService.createOrder({
-        name: this.order.name,
-        description: this.order.description,
-        orderDate: this.order.orderDate
-      }).subscribe({
+      // STEP 1: Prepare payload according to backend DTO
+  const order: CreateOrderModel = {
+  name: this.order.name,
+  description: this.order.description,
+  orderDate: this.order.orderDate,
+  boards: this.order.boards.map(b => ({
+    boardId: b.boardId,
+    components: b.components.map(c => ({
+      componentId: c.componentId,
+      quantity: c.quantity
+    }))
+  }))
+};
+
+console.log("ORDER:",order)
+
+      // STEP 2: Call backend full-create API
+      this.ordersService.createFullOrder(order).subscribe({
         next: (createdOrder) => {
-          const orderId = createdOrder.id;
-
-          // STEP 2: Add boards + components
-          const boardRequests = this.order.boards.map(board =>
-            this.ordersService.addBoardToOrder(orderId, board.boardId).pipe(
-              switchMap(() => {
-                const componentRequests = board.components.map(c =>
-                  this.ordersService.addComponentToBoard(
-                    orderId,
-                    board.boardId,
-                    c.componentId,
-                    c.quantity
-                  )
-                );
-                return forkJoin(componentRequests);
-              })
-            )
-          );
-
-          forkJoin(boardRequests).subscribe({
-            next: () => {
-              this.loading = false;
-              this.createdOrderId = orderId;
-              console.log('Order created successfully:', orderId);
-            },
-            error: (err) => {
-              this.loading = false;
-              console.error('Error adding boards/components', err);
-            }
-          });
+          this.loading = false;
+          this.createdOrderId = createdOrder.id;
+          console.log('Order created successfully:', createdOrder.id);
         },
         error: (err) => {
           this.loading = false;
-          console.error('Error creating order', err);
+          console.error('Error creating full order', err);
+          this.errorMessage = 'Failed to create order. See console for details.';
         }
       });
     },
@@ -148,5 +134,11 @@ export class CreateOrderComponent {
       this.errorMessage = 'Unable to validate order uniqueness.';
     }
   });
+
+
+
+  
 }
+
+
 }

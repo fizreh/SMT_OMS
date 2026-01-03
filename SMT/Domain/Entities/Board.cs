@@ -15,6 +15,11 @@ namespace SMT.Domain.Entities
         private readonly List<BoardComponent> _boardComponents = new();
         public IReadOnlyCollection<BoardComponent> BoardComponents => _boardComponents.AsReadOnly();
 
+        public void AddBoardComponent(BoardComponent bc)
+        {
+            _boardComponents.Add(bc);
+        }
+
         private Board() { }
 
         public Board(string name, string description, double length, double width)
