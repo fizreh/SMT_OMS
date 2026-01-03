@@ -84,70 +84,89 @@ namespace SMT.Application.Services
             return order.Id;
         }
 
-        
-
-          
-        
 
 
-        //public async Task<bool> UpdateOrderWithDetailsAsync(Guid orderId, OrderCreateDto dto)
-        //{
-        //    await _unitOfWork.BeginTransactionAsync();
 
-        //    try
-        //    {
-        //        // 1. Get existing order
-        //        var order = await _orderRepository.GetByIdAsync(orderId);
-        //        if (order == null)
-        //            return false;
 
-        //        // 2. Update order core fields
-        //        order.Name = dto.Name;
-        //        order.Description = dto.Description;
-        //        order.OrderDate = dto.OrderDate;
 
-        //        await _orderRepository.UpdateAsync(order);
 
-        //        // 3. Collect board IDs from request
-        //        var boardIds = dto.Boards
-        //            .Select(b => b.BoardId)
-        //            .Distinct()
-        //            .ToList();
+        public async Task<bool> UpdateOrderWithDetailsAsync(Guid orderId, OrderCreateDto dto)
+        {
+            await _unitOfWork.BeginTransactionAsync();
 
-        //        // 4. Remove existing relations
-        //        await _orderRepository.DeleteOrderBoardAsync(orderId);
-        //        await _orderRepository.DeleteBoardComponentsByBoardIdsAsync(boardIds);
-                
+            try
+            {
+                //Get existing order
+                var order = await _orderRepository.GetByIdAsync(orderId);
+                if (order == null)
+                    return false;
 
-        //        // 5. Re-create relations
-        //        foreach (var newBoard in dto.Boards)
-        //        {
-        //            var updatedBoard = new Board(newBoard.Name, newBoard.Description, newBoard.Length, newBoard.Width);
-        //            var updatedOrder = new Order(dto.Name, dto.Description,dto.OrderDate);
-        //            var updatedOrderBoard = new OrderBoard(updatedOrder, updatedBoard);
-        //            await _orderRepository.AddOrderBoardAsync(updatedOrderBoard);
+                //Update order core fields
+                order.Name = dto.Name;
+                order.Description = dto.Description;
+                order.OrderDate = dto.OrderDate;
 
-        //            foreach (var component in newBoard.Components)
-        //            {
-        //                var updatedComponent = new Component(component.Name, component.Description);
-        //                var updatedBoardComponent= new BoardComponent(updatedBoard,updatedComponent,component.Quantity);
-        //                await _orderRepository.AddBoardComponentAsync(
-        //                    updatedBoardComponent
-        //                );
-        //            }
-        //        }
+                await _orderRepository.UpdateAsync(order);
 
-        //        // 6. Commit transaction
-        //        await _unitOfWork.CommitAsync();
-        //        return true;
-        //    }
-        //    catch
-        //    {
-        //        await _unitOfWork.RollbackAsync();
-        //        throw;
-        //    }
-        //}
-        
+                // Collect board IDs from request
+                var boardIds = dto.Boards
+                    .Select(b => b.BoardId)
+                    .Distinct()
+                    .ToList();
+
+                // Remove existing relations
+                await _orderRepository.DeleteOrderBoardAsync(orderId);
+                await _orderRepository.DeleteBoardComponentsByBoardIdsAsync(boardIds);
+
+
+                // Re-create relations
+                foreach (var boardDto in dto.Boards)
+                {
+                    var orderBoard = order.OrderBoards.FirstOrDefault(ob => ob.BoardId == boardDto.BoardId);
+                    if (orderBoard == null)
+                    {
+                        // Add new board to order
+                        var board = await _boardRepository.GetByIdAsync(boardDto.BoardId);
+                        if (board == null) throw new Exception($"Board {boardDto.BoardId} not found");
+
+                        orderBoard = new OrderBoard(order, board);
+                        order.AddOrderBoard(orderBoard);
+                    }
+                   
+                        // 4. Loop through components
+                        foreach (var compDto in boardDto.Components)
+                        {
+                            var existingBoardComponent = orderBoard.Board.BoardComponents
+                                .FirstOrDefault(bc => bc.ComponentId == compDto.ComponentId);
+
+                            if (existingBoardComponent != null)
+                            {
+                                // Update quantity
+                                existingBoardComponent.Quantity = compDto.Quantity;
+                            }
+                            else
+                            {
+                                // Add new component to board
+                                var component = await _componentRepository.GetByIdAsync(compDto.ComponentId);
+                                if (component == null) throw new Exception($"Component {compDto.ComponentId} not found");
+
+                                var boardComponent = new BoardComponent(orderBoard.Board, component, compDto.Quantity);
+                                orderBoard.Board.AddBoardComponent(boardComponent);
+                            }
+                        }
+                }
+
+                //Commit transaction
+                await _unitOfWork.CommitAsync();
+                return true;
+            }
+            catch
+            {
+                await _unitOfWork.RollbackAsync();
+                throw;
+            }
+        }
+
 
 
 
