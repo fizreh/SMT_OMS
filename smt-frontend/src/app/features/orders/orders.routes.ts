@@ -19,6 +19,12 @@ export const ORDERS_ROUTES: Routes = [
       import('./pages/order-detail/order-detail')
         .then(m => m.OrderDetailComponent)
   },
+  {
+    path: 'update/:id',
+    loadComponent: () =>
+      import('./pages/order-update/order-update')
+        .then(m => m.OrderUpdateComponent)
+  },
   
   
 ];

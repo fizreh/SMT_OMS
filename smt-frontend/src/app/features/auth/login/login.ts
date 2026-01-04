@@ -3,20 +3,15 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../core/auth/auth.service';
 import { Router } from '@angular/router';
+import { MATERIAL_PROVIDERS } from '../../../shared/material/material.providers';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, FormsModule],
-  template: `
-    <h2>Login</h2>
-
-    <input [(ngModel)]="email" placeholder="Email" />
-    <input [(ngModel)]="password" type="password" placeholder="Password" />
-
-    <button (click)="login()">Login</button>
-
-    <p *ngIf="error">{{ error }}</p>
-  `
+  imports: [CommonModule, FormsModule,
+    MATERIAL_PROVIDERS
+  ],
+  templateUrl: './login.html',
+  styleUrl: './login.css'
 })
 export class Login {
   email = '';
@@ -32,8 +27,12 @@ export class Login {
     try {
       await this.auth.login(this.email, this.password);
       this.router.navigate(['/']);
-    } catch (e) {
-      this.error = 'Login failed';
-    }
+    } catch (e: any) {
+  if (e && e.message) {
+    this.error = e.message;
+  } else {
+    this.error = 'Login failed';
+  }
+}
   }
 }

@@ -41,6 +41,15 @@
       </button>
 
       <button
+        mat-stroked-button
+        color="primary"
+        (click)="updateOrder(order.id)"
+      >
+        <mat-icon>update</mat-icon>
+        Update
+      </button>
+
+      <button
         mat-icon-button
         color="warn"
         (click)="confirmDelete(order.id)"

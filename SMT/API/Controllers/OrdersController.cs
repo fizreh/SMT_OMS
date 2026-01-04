@@ -114,7 +114,7 @@ namespace SMT.API.Controllers
             return CreatedAtAction(nameof(Get), new { id = orderId }, new { id = orderId });
         }
 
-        [HttpPut("{id}/full")]
+        [HttpPut("update/{id}")]
         public async Task<IActionResult> UpdateFullOrder(Guid id, [FromBody] OrderCreateDto dto)
         {
             var updatedOrderId = await _orderService.UpdateOrderWithDetailsAsync(id, dto);

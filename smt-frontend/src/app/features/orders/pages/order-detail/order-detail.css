@@ -1,10 +1,23 @@
-.toggle button {
-  margin-right: 8px;
-  padding: 6px 12px;
-  cursor: pointer;
+.board-card {
+  margin-bottom: 16px;
 }
 
-.toggle button.active {
-  font-weight: bold;
-  background-color: #eee;
+.view-toggle {
+  margin-bottom: 16px;
+}
+
+.mat-list-item h4, .mat-list-item p {
+  margin: 0;
+}
+
+.mat-card-title, .mat-card-subtitle {
+  margin: 0;
+}
+
+.my-3 {
+  margin: 16px 0;
+}
+
+.mb-2 {
+  margin-bottom: 8px;
 }
