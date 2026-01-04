@@ -1,5 +1,6 @@
 using API.Authentication;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Serilog;
@@ -15,8 +16,18 @@ var builder = WebApplication.CreateBuilder(args);
 var allowedOrigins = "_allowedOrigins";
 
 // Add DbContext
+//builder.Services.AddDbContext<SMTDbContext>(options =>
+//    options.UseSqlite("Data Source=Data/smt.db"));
+
+//For Docker
 builder.Services.AddDbContext<SMTDbContext>(options =>
-    options.UseSqlite("Data Source=Data/smt.db"));
+    options.UseSqlite(
+        builder.Configuration.GetConnectionString("DefaultConnection")
+    ));
+
+builder.Services.AddDataProtection()
+    .PersistKeysToFileSystem(new DirectoryInfo("/app/data-protection"))
+    .SetApplicationName("SMT_OMS");
 
 builder.Services.AddSerilog(options =>
 {
