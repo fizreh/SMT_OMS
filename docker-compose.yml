@@ -1,0 +1,38 @@
+services:
+  backend:
+    build:
+      context: ./SMT           
+      dockerfile: Dockerfile   
+    container_name: smt-backend
+    ports:
+      - "7121:7121"          
+    volumes:
+      - smt-data:/app/data  #Persists SQLite Db
+      - smt-logs:/app/logs  #Persists Serilog Logs
+      - smt-keys:/app/data-protection
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - smt-network
+
+  frontend:
+    build:
+      context: ./smt-frontend      
+      dockerfile: Dockerfile
+    container_name: smt-frontend
+    ports:
+      - "4200:80"             
+    depends_on:
+      - backend
+    networks:
+      - smt-network
+
+volumes:
+  smt-data:
+  smt-logs:
+  smt-keys:
+
+networks:
+  smt-network:
+    driver: bridge
+   

@@ -1,0 +1,21 @@
+{
+  "name": "ASMPT-SMT-ORDER-001",
+  "description": "SMT production order for ASMPT demo line",
+  "orderDate": "2025-01-10T00:00:00",
+  "boards": [
+    {
+      "boardId": "506e5a71-0e06-46b3-91a0-b6ff37b51f71",
+      "components": [
+        { "componentId": "1f1cea28-7b96-4e7b-a4a5-bdc983b9e4cf", "quantity": 1000 },
+        { "componentId": "a63d7598-58c6-40d7-ad23-f3b7216aefaa", "quantity": 10 }
+      ]
+    },
+    {
+      "boardId": "cc0691c3-aade-45bd-abfa-94760b531e8c",
+      "components": [
+        { "componentId": "a63d7598-58c6-40d7-ad23-f3b7216aefaa", "quantity": 8 },
+        { "componentId": "d701c1ba-5e53-430f-a718-20fff4b12959", "quantity": 15 }
+      ]
+    }
+  ]
+}

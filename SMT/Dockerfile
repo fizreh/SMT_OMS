@@ -29,8 +29,9 @@ RUN dotnet publish API/API.csproj -c Release -o /app/publish
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
 
-# Create Data folder for SQLite Volume
-RUN mkdir -p /app/Data
+# Create folder for SQLite database and Logs
+RUN mkdir -p /app/data /app/logs \
+    && chmod -R 777 /app/data /app/logs #Persissions set
 
 # Copy published app from build stage
 COPY --from=build /app/publish .
