@@ -6,7 +6,7 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-root',
   imports: [RouterOutlet],
   template: `
-    <h1>SMT Order Management</h1>
+    <h1>SMT Order Management System</h1>
     <router-outlet />
   `
 })

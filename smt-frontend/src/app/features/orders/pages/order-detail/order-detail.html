@@ -1,45 +1,64 @@
-<div *ngIf="loading">Loading order details...</div>
-<div *ngIf="error">{{ error }}</div>
+<mat-card *ngIf="loading">
+  <mat-card-content>
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+    Loading order details...
+  </mat-card-content>
+</mat-card>
 
-<h2>Order Details</h2>
+<mat-card *ngIf="error" color="warn">
+  <mat-card-content>
+    <mat-icon color="warn">error</mat-icon>
+    {{ error }}
+  </mat-card-content>
+</mat-card>
 
-<div class="toggle">
-  <button 
-    [class.active]="viewMode === 'formatted'"
-    (click)="setView('formatted')">
-    Formatted View
-  </button>
+<mat-card *ngIf="order">
+  <mat-card-title>Order Details</mat-card-title>
+  <mat-card-content>
 
-  <button 
-    [class.active]="viewMode === 'json'"
-    (click)="setView('json')">
-    JSON View
-  </button>
-</div>
+    <div class="view-toggle">
+      <mat-button-toggle-group
+        [(ngModel)]="viewMode"
+        appearance="standard">
+        <mat-button-toggle value="formatted">Formatted View</mat-button-toggle>
+        <mat-button-toggle value="json">JSON View</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
 
-<hr />
+    <mat-divider class="my-3"></mat-divider>
 
-<!-- FORMATTED VIEW -->
-<div *ngIf="order && viewMode === 'formatted'">
-  <p><strong>Name:</strong> {{ order.Name }}</p>
-  <p><strong>Description:</strong> {{ order.Description }}</p>
-  <p><strong>Date:</strong> {{ order.OrderDate }}</p>
+    <!-- FORMATTED VIEW -->
+    <div *ngIf="viewMode === 'formatted'">
+      <p><strong>Name:</strong> {{ order.Name }}</p>
+      <p><strong>Description:</strong> {{ order.Description }}</p>
+      <p><strong>Date:</strong> {{ order.OrderDate | date:'medium' }}</p>
 
-  <h3>Boards</h3>
-  <div *ngFor="let board of order.Boards">
-    <h4>{{ board.Name }} - {{ board.Description }}</h4>
-    <p></p>
+      <h3>Boards</h3>
+      <div *ngFor="let board of order.Boards" class="board-card">
+        <mat-card class="mb-2" appearance="outlined">
+          <mat-card-header>
+            <mat-card-title>{{ board.Name }}</mat-card-title>
+            <mat-card-subtitle>{{ board.Description }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <h4>Components</h4>
+            <mat-list>
+              <mat-list-item *ngFor="let comp of board.Components">
+                <h4 mat-line>{{ comp.Name }} - quantity: {{ comp.Quantity }}</h4>
+                
+              </mat-list-item>
+            </mat-list>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
 
-    <h4>Components</h4>
-    <ul>
-      <li *ngFor="let comp of board.Components">
-        {{ comp.Name }} — Qty: {{ comp.Quantity }}
-      </li>
-    </ul>
-  </div>
-</div>
+    <!-- JSON VIEW -->
+    <div *ngIf="viewMode === 'json'">
+      <mat-card>
+        <pre>{{ order | json }}</pre>
+      </mat-card>
+    </div>
 
-<!-- JSON VIEW -->
-<pre *ngIf="order && viewMode === 'json'">
-{{ order | json }}
-</pre>
+  </mat-card-content>
+</mat-card>

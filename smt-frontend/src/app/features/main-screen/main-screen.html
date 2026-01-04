@@ -1,5 +1,31 @@
-<h1>Welcome to SMT System</h1>
-<div class="actions">
-  <button (click)="goToCreateOrder()">Create Order</button>
-  <button (click)="goToViewOrders()">View Orders</button>
+<mat-toolbar color="primary" class="toolbar">
+
+  <span class="spacer"></span>
+
+  <button
+    mat-stroked-button
+    color="accent"
+    (click)="onSignOut()">
+    Sign Out
+  </button>
+</mat-toolbar>
+
+<div class="content">
+  <h1 class="welcome-title">Welcome to OMS System</h1>
+
+  <div class="action-buttons">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="goToCreateOrder()">
+      Create Order
+    </button>
+
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="goToViewOrders()">
+      View Orders
+    </button>
+  </div>
 </div>

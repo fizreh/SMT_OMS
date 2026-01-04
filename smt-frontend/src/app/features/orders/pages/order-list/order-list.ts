@@ -34,6 +34,10 @@ export class OrdersListComponent implements OnInit {
    viewOrder(orderId: string) {
     this.router.navigate(['/orders', orderId]);
   }
+  updateOrder(orderId: string) {
+  // Navigate to the Order Update component
+  this.router.navigate(['/orders/update', orderId]);
+}
 
 confirmDelete(orderId: string) {
   const confirmed = confirm('Are you sure you want to delete this order?');

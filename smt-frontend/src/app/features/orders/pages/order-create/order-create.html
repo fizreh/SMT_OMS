@@ -1,50 +1,66 @@
-<mat-card>
-  <mat-card-title>Create Order</mat-card-title>
+<mat-card class="order-card">
+  <mat-card-header>
+    <mat-card-title>Create Order</mat-card-title>
+  </mat-card-header>
 
   <mat-card-content>
+    <!-- Order Name -->
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Order Name</mat-label>
       <input matInput [(ngModel)]="order.name" />
     </mat-form-field>
 
+    <!-- Order Description -->
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Description</mat-label>
-      <textarea matInput [(ngModel)]="order.description"></textarea>
+      <textarea matInput rows="3" [(ngModel)]="order.description"></textarea>
     </mat-form-field>
 
-    <mat-divider></mat-divider>
+    <mat-divider class="section-divider"></mat-divider>
 
-    <app-add-board-to-order  (boardAdded)="addBoard($event)"></app-add-board-to-order>
+    <!-- Add Board Section -->
+    <app-add-board-to-order (boardAdded)="addBoard($event)"></app-add-board-to-order>
 
-    <mat-accordion>
-      <mat-expansion-panel *ngFor="let board of order.boards">
+    <!-- Boards Accordion -->
+    <mat-accordion class="boards-accordion" multi>
+      <mat-expansion-panel *ngFor="let board of order.boards; let i = index">
         <mat-expansion-panel-header>
           <mat-panel-title>
-            {{ board.boardName }}
+            Board {{ i + 1 }}: {{ board.boardName }}
           </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <app-add-component  [boardId]="board.boardId" (componentAdded)="addComponentToBoard(board.boardId,$event)"></app-add-component>
+        <!-- Add Components to Board -->
+        <app-add-component
+          [boardId]="board.boardId"
+          (componentAdded)="addComponentToBoard(board.boardId, $event)">
+        </app-add-component>
 
+        <!-- List Components -->
         <mat-list>
-          <mat-list-item *ngFor="let c of board.components">
-            {{ c.componentName }} — Qty: {{ c.quantity }}
+          <mat-list-item *ngFor="let c of board.components let j = index">
+            <span class="component-name">{{ c.componentName }}</span>
+            <span class="component-qty">Qty: {{ c.quantity }}</span>
+         <button
+      mat-icon-button
+      color="warn"
+      (click)="removeComponentFromBoard(board.boardId,j)">
+      <mat-icon>delete</mat-icon>
+    </button>
           </mat-list-item>
         </mat-list>
       </mat-expansion-panel>
     </mat-accordion>
   </mat-card-content>
 
+  <!-- Actions -->
   <mat-card-actions align="end">
-    <mat-error *ngIf="orderExists">
-  {{ errorMessage }}
-</mat-error>
+    <mat-error *ngIf="orderExists">{{ errorMessage }}</mat-error>
     <button
       mat-raised-button
       color="primary"
       (click)="submit()"
-      [disabled]="!canSubmit()"
-    >
+      [disabled]="!canSubmit()">
       Create Order
     </button>
   </mat-card-actions>

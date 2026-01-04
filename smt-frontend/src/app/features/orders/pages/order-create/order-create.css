@@ -1,0 +1,32 @@
+.order-card {
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 16px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.section-divider {
+  margin: 24px 0;
+}
+
+.boards-accordion {
+  margin-top: 16px;
+}
+
+mat-list-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.component-name {
+  font-weight: 500;
+}
+
+.component-qty {
+  font-style: italic;
+  color: gray;
+}

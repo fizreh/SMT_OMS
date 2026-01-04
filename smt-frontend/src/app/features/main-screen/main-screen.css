@@ -1,0 +1,36 @@
+/* Toolbar */
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* Center page content */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   
+  justify-content: center; 
+  margin-top: 80px;
+  text-align: center;
+}
+
+/* Page heading */
+.welcome-title {
+  margin-bottom: 32px;
+}
+
+/* Buttons row */
+.action-buttons {
+  display: flex;
+  gap: 24px;
+}

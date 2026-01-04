@@ -114,16 +114,16 @@ namespace SMT.API.Controllers
             return CreatedAtAction(nameof(Get), new { id = orderId }, new { id = orderId });
         }
 
-        [HttpPut("{id}/full")]
-        //public async Task<IActionResult> UpdateFullOrder(Guid id, [FromBody] OrderCreateDto dto)
-        //{
-        //    var updatedOrderId = await _orderService.UpdateOrderWithDetailsAsync(id, dto);
+        [HttpPut("update/{id}")]
+        public async Task<IActionResult> UpdateFullOrder(Guid id, [FromBody] OrderCreateDto dto)
+        {
+            var updatedOrderId = await _orderService.UpdateOrderWithDetailsAsync(id, dto);
 
-        //    if (updatedOrderId == null)
-        //        return NotFound("Order not found");
+            if (updatedOrderId == null)
+                return NotFound("Order not found");
 
-        //    return NoContent(); // Standard 204 for successful update
-        //}
+            return NoContent(); 
+        }
 
 
         [HttpDelete("{id}")]

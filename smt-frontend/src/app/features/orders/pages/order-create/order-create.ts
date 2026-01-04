@@ -20,7 +20,8 @@ import { CreateOrderModel } from '../../../../shared/models/create-order-models/
     FormsModule,
     MATERIAL_PROVIDERS,
     AddComponentToBoard, AddBoardToOrder],
-  templateUrl: './order-create.html'
+  templateUrl: './order-create.html',
+  styleUrl:'./order-create.css'
 })
 export class CreateOrderComponent {
    order: CreateOrder = {
@@ -55,6 +56,11 @@ export class CreateOrderComponent {
 
     // Add a board with empty components
   addBoard(board: OrderBoard) {
+     // Check if board already exists
+   const existingBoard = this.order.boards.find(b => b.boardId === board.boardId);
+    if (existingBoard) {
+    return; // Board already exists, do nothing
+    }
     this.order.boards.push({
       boardId: board.boardId,
       boardName: board.boardName,
@@ -65,11 +71,27 @@ export class CreateOrderComponent {
     });
   }
 
+  removeComponentFromBoard(boardId: string, componentIndex: number) {
+  const board = this.order.boards.find(b => b.boardId === boardId);
+  if (board) {
+    board.components.splice(componentIndex, 1);
+  }
+}
+
    // Add a component to a specific board
   addComponentToBoard(boardId: string, component: BoardComponent) {
     const board = this.order.boards.find(b => b.boardId === boardId);
-    if (board) {
-      board.components.push(component);
+    if (!board) return;
+
+    // Check if component already exists in the board
+    const existingComponent = board.components.find(c => c.componentId === component.componentId);
+
+    if (existingComponent) {
+    // If exists, add the quantity
+    existingComponent.quantity += component.quantity;
+    } else {
+    // Else, push new component
+    board.components.push({ ...component }); // spread to avoid reference issues
     }
   }
   // Enable submit only if order name and boards/components exist

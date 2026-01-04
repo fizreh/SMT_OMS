@@ -2,10 +2,15 @@ import { Component, Input, OnInit } from '@angular/core';
 import { OrdersService } from '../../services/orders.service';
 import { CommonModule, JsonPipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { MATERIAL_PROVIDERS } from '../../../../shared/material/material.providers';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-order-detail',
-  imports: [CommonModule, JsonPipe],
+  imports: [CommonModule, JsonPipe,
+    MATERIAL_PROVIDERS,
+    FormsModule
+  ],
   templateUrl: './order-detail.html',
   styleUrl: './order-detail.css',
 })
