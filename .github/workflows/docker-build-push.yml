@@ -25,17 +25,18 @@ jobs:
     - name: Build & Push Backend
       uses: docker/build-push-action@v5
       with:
-        context: ./backend
+        context: ./SMT
         push: true
         tags: |
-          ${{ secrets.DOCKERHUB_USERNAME }}/smt_oms/backend:latest
-          ${{ secrets.DOCKERHUB_USERNAME }}/smt_oms/backend:${{ github.sha }}
+          ${{ secrets.DOCKERHUB_USERNAME }}/smt_oms:backend:latest
+          ${{ secrets.DOCKERHUB_USERNAME }}/smt_oms:
+          backend:${{ github.sha }}
           
     - name: Build & Push Frontend
       uses: docker/build-push-action@v5
       with:
-        context: ./frontend
+        context: ./smt-frontend
         push: true
         tags: |
-          ${{ secrets.DOCKERHUB_USERNAME }}/smt-frontend:latest
-          ${{ secrets.DOCKERHUB_USERNAME }}/smt-frontend:${{ github.sha }}
+          ${{ secrets.DOCKERHUB_USERNAME }}/smt_oms:frontend:latest
+          ${{ secrets.DOCKERHUB_USERNAME }}/smt_oms:frontend:${{ github.sha }}
