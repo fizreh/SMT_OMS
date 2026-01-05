@@ -19,9 +19,9 @@ jobs:
     - name: Inject Firebase Keys
       run: |
          # Ensure the directory exists
-         mkdir -p ./smt-frontend/src/environments
+         mkdir -p smt-frontend/src/environments
          # Create the file with production settings
-         cat <<EOF > ./smt-frontend/src/environments/environment.prod.ts
+         cat <<EOF > smt-frontend/src/environments/environment.prod.ts
          export const environment = {
          production: true,
          apiUrl: '/api',
