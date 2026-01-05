@@ -1,4 +1,10 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:7121/api'
+  apiUrl: 'http://localhost:7121/api',
+  firebase: {
+    apiKey: '',
+    authDomain: '',
+    projectId: '',
+    appId: ''
+  }
 };
