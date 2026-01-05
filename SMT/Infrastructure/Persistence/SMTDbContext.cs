@@ -49,16 +49,16 @@ namespace SMT.Infrastructure.Persistence
                 .HasOne(bc => bc.Component)
                 .WithMany(c => c.BoardComponents)
                 .HasForeignKey(bc => bc.ComponentId);
-            
+
             //Example DATA
             // IDs
-            var order1Id = Guid.NewGuid();
-            var board1Id = Guid.NewGuid();
-            var board2Id = Guid.NewGuid();
+            var order1Id = Guid.Parse("00000000-0000-0000-0000-000000000001");
+            var board1Id = Guid.Parse("00000000-0000-0000-0000-000000000002");
+            var board2Id = Guid.Parse("00000000-0000-0000-0000-000000000003");
 
-            var resistorId = Guid.NewGuid();
-            var capacitorId = Guid.NewGuid();
-            var icId = Guid.NewGuid();
+            var resistorId = Guid.Parse("11111111-1111-1111-1111-111111111111");
+            var capacitorId = Guid.Parse("22222222-2222-2222-2222-222222222222");
+            var icId = Guid.Parse("33333333-3333-3333-3333-333333333333");
 
             // --------------------
             // Orders

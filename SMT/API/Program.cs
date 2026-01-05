@@ -35,6 +35,39 @@ builder.Services.AddSerilog(options =>
 
 });
 
+//Authorization in Swagger
+builder.Services.AddSwaggerGen(opt =>
+{
+    opt.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+
+    // 1. Define the Security Scheme
+    opt.AddSecurityDefinition("FirebaseBearer", new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Description = "Please enter Firebase ID token (JWT) into field below.",
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        BearerFormat = "JWT",
+        Scheme = "Bearer"
+    });
+
+    // 2. Apply Security Requirement Globally
+    opt.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "FirebaseBearer"
+                }
+            },
+            new string[] { }
+        }
+    });
+});
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: allowedOrigins, policy =>
@@ -105,8 +138,22 @@ var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
 {
-    var db = scope.ServiceProvider.GetRequiredService<SMTDbContext>();
-    db.Database.EnsureCreated();
+
+    try
+    {
+        var db = scope.ServiceProvider.GetRequiredService<SMTDbContext>();
+        // Apply any pending migrations and create the DB if it doesn't exist
+        db.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred while migrating the database.");
+    }
+
+
+    //    var db = scope.ServiceProvider.GetRequiredService<SMTDbContext>();
+    //    db.Database.EnsureCreated();
 }
 app.UseSwagger();
 app.UseSwaggerUI();

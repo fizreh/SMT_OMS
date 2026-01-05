@@ -1,0 +1,18 @@
+[
+  {
+    "id": "22b8ed94-9479-437b-8ad5-85e5a5c78d05",
+    "name": "Control Board PCB",
+    "description": "Main control PCB for ASMPT placement system",
+    "length": 120,
+    "width": 80,
+    "components": []
+  },
+  {
+    "id": "481e7725-03fa-4d02-bc65-811181f539ac",
+    "name": "Power Board PCB",
+    "description": "Power supply PCB for SMT machine",
+    "length": 150,
+    "width": 100,
+    "components": []
+  }
+]

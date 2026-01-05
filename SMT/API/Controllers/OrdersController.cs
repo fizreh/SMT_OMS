@@ -10,7 +10,7 @@ namespace SMT.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-   // [Authorize(AuthenticationSchemes = "Firebase")]
+   [Authorize(AuthenticationSchemes = "Firebase")]
     public class OrdersController : ControllerBase
     {
         private readonly OrderService _orderService;
@@ -103,7 +103,7 @@ namespace SMT.API.Controllers
       
 
         [HttpPost("full")]
-        [AllowAnonymous]
+        
         public async Task<IActionResult> CreateFullOrder(
          [FromBody] OrderCreateDto dto)
         {
