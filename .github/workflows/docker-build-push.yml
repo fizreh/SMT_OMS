@@ -18,14 +18,16 @@ jobs:
       
     - name: Inject Firebase Keys
       run: |
-        # Overwrite the production environment file with real values
-        cat <<EOF > ./smt-frontend/src/environments/environment.prod.ts
-        export const environment = {
-          production: true,
-          apiUrl: '/api',
-          firebase: ${{ secrets.FIREBASE_CONFIG }}
-        };
-        EOF
+         # Ensure the directory exists
+         mkdir -p src/environments
+         # Create the file with production settings
+         cat <<EOF > src/environments/environment.prod.ts
+         export const environment = {
+         production: true,
+         apiUrl: '/api',
+         firebase: ${{ secrets.FIREBASE_CONFIG }}
+         };
+         EOF
         
     - name: Create Firebase Config File
       run: |
