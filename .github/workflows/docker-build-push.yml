@@ -28,9 +28,8 @@ jobs:
         context: ./SMT
         push: true
         tags: |
-          ${{ secrets.DOCKERHUB_USERNAME }}/smt_oms:backend:latest
-          ${{ secrets.DOCKERHUB_USERNAME }}/smt_oms:
-          backend:${{ github.sha }}
+          ${{ secrets.DOCKERHUB_USERNAME }}/smt_oms:backend
+          ${{ secrets.DOCKERHUB_USERNAME }}/smt_oms:backend:${{ github.sha }}
           
     - name: Build & Push Frontend
       uses: docker/build-push-action@v5
@@ -38,5 +37,5 @@ jobs:
         context: ./smt-frontend
         push: true
         tags: |
-          ${{ secrets.DOCKERHUB_USERNAME }}/smt_oms:frontend:latest
+          ${{ secrets.DOCKERHUB_USERNAME }}/smt_oms:frontend
           ${{ secrets.DOCKERHUB_USERNAME }}/smt_oms:frontend:${{ github.sha }}
