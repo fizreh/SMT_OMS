@@ -4,7 +4,7 @@ import { AppComponent } from './app/app';
 import { APP_ROUTES } from './app/app.routes';
 import { CORE_PROVIDERS } from './app/core/providers';
 import { MATERIAL_PROVIDERS } from './app/shared/material/material.providers';
-import { environment } from './environments/environment.local';
+import { environment } from './environments/environment';
 import { initializeApp } from 'firebase/app';
 
 initializeApp(environment.firebase);
