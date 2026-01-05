@@ -34,6 +34,8 @@ export class CreateOrderComponent {
   createdOrderId: string | null = null;
   orderExists = false;
   errorMessage = '';
+  successMessage: string | null = null;
+  isSubmitting = false;
  form:any;
 
    constructor(
@@ -41,6 +43,7 @@ export class CreateOrderComponent {
     private ordersService: OrdersService,
     private boardService: BoardsService
   ) {}
+
 
   private checkOrderExists(name: string) {
   return this.ordersService.getOrders().pipe(
@@ -51,6 +54,19 @@ export class CreateOrderComponent {
     )
   );
  }
+
+ resetForm() {
+  this.order = {
+    name: '',
+    description: '',
+    orderDate: new Date().toISOString(),
+    boards: []
+  };
+
+  this.createdOrderId = null;
+  this.orderExists = false;
+  this.errorMessage = '';
+}
  
  
 
@@ -102,14 +118,17 @@ export class CreateOrderComponent {
       this.order.boards.every(b => b.components.length > 0)
     );
   }
+  
 
   // Submit the order + boards + components
   submit() {
   if (!this.canSubmit()) return;
 
+  this.isSubmitting = true;
+  this.successMessage = null;
   this.loading = true;
   this.errorMessage = '';
-  this.orderExists = false;
+  this.orderExists = false;  
 
 // STEP 0: Check if order already exists
   this.checkOrderExists(this.order.name).subscribe({
@@ -142,6 +161,9 @@ console.log("ORDER:",order)
         next: (createdOrder) => {
           this.loading = false;
           this.createdOrderId = createdOrder.id;
+           this.successMessage = 'Order created successfully';
+          this.resetForm();
+          this.isSubmitting = false;
           console.log('Order created successfully:', createdOrder.id);
         },
         error: (err) => {
