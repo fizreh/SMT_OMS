@@ -30,8 +30,8 @@ jobs:
     - name: Create Firebase Config File
       run: |
         # Add the firebase-service.json file with the content
-        mkdir -p ./app/Config
-        echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}' > ./app/Config/firebase-service.json
+        mkdir -p ./SMT/API/Config
+        echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}' > ./SMT/API/Config/firebase-service.json
       
 
     - name: Login to Docker Hub
