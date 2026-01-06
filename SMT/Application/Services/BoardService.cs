@@ -1,7 +1,9 @@
-﻿using SMT.Application.Interfaces;
+﻿using SMT.Application.DTOs;
+using SMT.Application.Interfaces;
 using SMT.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Threading.Tasks;
 
 namespace SMT.Application.Services
@@ -15,9 +17,12 @@ namespace SMT.Application.Services
             _boardRepository = boardRepository;
         }
 
-        public async Task<Board> CreateBoardAsync(string name, string description, double length, double width)
+        public async Task<Board> CreateBoardAsync(Board board)
         {
-            var board = new Board(name, description,length,width);
+            if(board == null)
+            {
+                throw new ArgumentNullException(nameof(board));
+            }
             await _boardRepository.AddAsync(board);
             return board;
         }
@@ -32,25 +37,43 @@ namespace SMT.Application.Services
             return await _boardRepository.GetAllAsync();
         }
 
-        public async Task UpdateBoardAsync(Board board)
+        public async Task<bool> UpdateBoardAsync(BoardDto board)
         {
-            await _boardRepository.UpdateAsync(board);
-        }
+            try
+            {
+                if (board == null)
+                {
+                    return false;
+                }
+                var existingBoard = await _boardRepository.GetByIdAsync(board.Id);
+                if (existingBoard == null)
+                {
+                    return false;
+                }
+                existingBoard.Update(board.Name, board.Description, board.Width, board.Length);
+               
 
-        public async Task DeleteBoardAsync(Guid id)
+                await _boardRepository.UpdateAsync(existingBoard);
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+                
+
+            }
+        }
+        public async Task<bool> DeleteBoardAsync(Guid id)
         {
+            if (id == null || id == Guid.Empty)
+            {
+                return false;
+            }
             await _boardRepository.DeleteAsync(id);
+            return true;
         }
 
-        // Simulate download to production line
-        public async Task<string> DownloadBoardAsync(Guid id)
-        {
-            var board = await _boardRepository.GetByIdAsync(id);
-            if (board == null) throw new Exception("Board not found");
 
-            // Return serialized JSON string of board
-            var boardJson = System.Text.Json.JsonSerializer.Serialize(board);
-            return boardJson;
-        }
     }
 }

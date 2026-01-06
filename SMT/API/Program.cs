@@ -15,11 +15,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Define CORS policy
 var allowedOrigins = "_allowedOrigins";
 
-// Add DbContext
-//builder.Services.AddDbContext<SMTDbContext>(options =>
-//    options.UseSqlite("Data Source=Data/smt.db"));
 
-//For Docker
+
 builder.Services.AddDbContext<SMTDbContext>(options =>
     options.UseSqlite(
         builder.Configuration.GetConnectionString("DefaultConnection")

@@ -12,6 +12,12 @@ namespace SMT.Domain.Entities
 
         private Component() { } // For ORM
 
+        public void Update(string name, string description)
+        {
+            Name = name;
+            Description = description;
+        }
+
         public Component(string name, string description)
         {
             Name = name;

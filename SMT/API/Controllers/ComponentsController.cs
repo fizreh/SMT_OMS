@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Application.DTOs.CreateDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SMT.Application.DTOs;
 using SMT.Application.Services;
+using SMT.Domain.Entities;
 using System;
 using System.Threading.Tasks;
 
@@ -47,19 +49,41 @@ namespace SMT.API.Controllers
         }
 
 
+
+        [HttpPut("update/{id}")]
+        public async Task<IActionResult> UpdateComponent(Guid id, [FromBody] ComponentDto dto)
+        {
+            if (dto == null)
+            {
+                throw new ArgumentNullException(nameof(dto), "Component cannot be null.");
+            }
+            
+            var isUpdated = await _componentService.UpdateComponentAsync(dto);
+
+            if (!isUpdated)
+                return NotFound("Component not updated");
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            await _componentService.DeleteComponentAsync(id);
+            return NoContent();
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] ComponentDto componentDto)
         {
-            _logger.LogInformation("Create order request started for Order {BoardName}", componentDto.Name);
-            var component = await _componentService.CreateComponentAsync(
-
-                componentDto.Name,
-                componentDto.Description
-            );
+            _logger.LogInformation("Create component request started for component {ComponentName}", componentDto.Name);
+            var newComponent = new Component(componentDto.Name, componentDto.Description);
+            var component = await _componentService.CreateComponentAsync(newComponent);
 
             if (component == null)
             {
-                _logger.LogError("Board request failed for Board {OrderName}", componentDto.Name);
+                _logger.LogError("Component request failed for Component {ComponentName}", componentDto.Name);
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
 
@@ -71,7 +95,7 @@ namespace SMT.API.Controllers
                 Description = component.Description
             };
 
-            _logger.LogInformation("Create component request completed for Order {ComponentName}", createdComponent.Name);
+            _logger.LogInformation("Create component request completed forComponent {ComponentName}", createdComponent.Name);
 
             return CreatedAtAction(nameof(GetAll), new { id = component.Id }, componentDto);
         }

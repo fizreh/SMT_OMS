@@ -36,16 +36,12 @@ namespace SMT.Infrastructure.Repositories
         public async Task<IEnumerable<Component>> GetAllAsync()
         {
             return await _context.Components
-                .Include(o => o.BoardComponents)
-                .ThenInclude(ob => ob.Board)
                 .ToListAsync();
         }
 
         public async Task<Component> GetByIdAsync(Guid id)
         {
             return await _context.Components
-                .Include(o => o.BoardComponents)
-                .ThenInclude(ob => ob.Board)
                 .FirstOrDefaultAsync(o => o.Id == id);
         }
 
