@@ -56,7 +56,9 @@
   <!-- Actions -->
   <mat-card-actions align="end">
     <mat-error *ngIf="orderExists">{{ errorMessage }}</mat-error>
-    <mat-label *ngIf="isSubmitting">{{ successMessage }}</mat-label>
+    <mat-hint *ngIf="!isSubmitting" class="success-message">
+    {{ successMessage }}
+  </mat-hint>
     <button
       mat-raised-button
       color="primary"

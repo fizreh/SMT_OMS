@@ -30,3 +30,7 @@ mat-list-item {
   font-style: italic;
   color: gray;
 }
+
+.success-message {
+  color: #28a745; /* Standard green color */
+}
