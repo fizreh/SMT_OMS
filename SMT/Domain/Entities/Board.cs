@@ -19,6 +19,13 @@ namespace SMT.Domain.Entities
         {
             _boardComponents.Add(bc);
         }
+        public void Update(string name, string description, double length, double width)
+        {
+            Name = name;
+            Description = description;
+            Length = length;
+            Width = width;
+        }
 
         private Board() { }
 

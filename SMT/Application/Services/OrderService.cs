@@ -1,6 +1,5 @@
 ﻿using Application.DTOs.CreateDtos;
 using Microsoft.Extensions.Logging;
-using SMT.Application.DTOs;
 using SMT.Application.Interfaces;
 using SMT.Domain.Entities;
 using System;
@@ -102,9 +101,8 @@ namespace SMT.Application.Services
                     return false;
 
                 //Update order core fields
-                order.Name = dto.Name;
-                order.Description = dto.Description;
-                order.OrderDate = dto.OrderDate;
+               
+                order.Update(dto.Name, dto.Description, dto.OrderDate);
 
                 await _orderRepository.UpdateAsync(order);
 
@@ -156,7 +154,7 @@ namespace SMT.Application.Services
                         }
                 }
 
-                //Commit transaction
+                // 6. Commit transaction
                 await _unitOfWork.CommitAsync();
                 return true;
             }

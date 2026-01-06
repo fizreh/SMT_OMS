@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SMT.Application.DTOs;
 using SMT.Application.Services;
+using SMT.Domain.Entities;
 using System;
 using System.Threading.Tasks;
 
@@ -48,22 +49,41 @@ namespace SMT.API.Controllers
             return Ok(result);
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            await _boardService.DeleteBoardAsync(id);
+            return NoContent();
+        }
+
+
+        [HttpPut("update/{id}")]
+        public async Task<IActionResult> UpdateBoard([FromBody] BoardDto dto)
+        {
+            if(dto == null)
+            {
+                throw new ArgumentNullException(nameof(dto), "Board cannot be null.");
+            }
+        
+            var isUpdated = await _boardService.UpdateBoardAsync(dto);
+
+            if (!isUpdated)
+                return NotFound("Board not updated");
+
+            return NoContent();
+        }
+
 
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] BoardDto boardDto)
         {
-            _logger.LogInformation("Create order request started for Order {BoardName}", boardDto.Name);
-            var board = await _boardService.CreateBoardAsync(
-
-                boardDto.Name,
-                boardDto.Description,
-                boardDto.Length,
-                boardDto.Width
-            );
+            _logger.LogInformation("Create board request started for Board {BoardName}", boardDto.Name);
+            var newBoard = new Board(boardDto.Name, boardDto.Description, boardDto.Length, boardDto.Width);
+            var board = await _boardService.CreateBoardAsync(newBoard);
 
             if (board== null)
             {
-                _logger.LogError("Board request failed for Board {OrderName}", boardDto.Name);
+                _logger.LogError("Board request failed for Board {BoardName}", boardDto.Name);
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
 
@@ -77,7 +97,7 @@ namespace SMT.API.Controllers
                 Width = board.Width
             };
 
-            _logger.LogInformation("Create order request completed for Order {BoardName}", board.Name);
+            _logger.LogInformation("Create board request completed for Board {BoardName}", board.Name);
 
             return CreatedAtAction(nameof(GetAll), new { id = board.Id }, boardDto);
         }

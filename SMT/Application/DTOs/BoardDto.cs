@@ -8,7 +8,6 @@
         public double Length { get; set; }
         public double Width { get; set; }
 
-        // Components on this board
-        public List<ComponentDto> Components { get; set; } = new();
+ 
     }
 }
